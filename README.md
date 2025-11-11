@@ -1,7 +1,6 @@
-</div>
 # Furkan :) 👋
 ## Hey there! I'm a Full-Stack Developer with five years of experience. I transform my ideas into functional and polished products.
-
+</div>
 
 ---
 
