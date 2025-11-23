@@ -6,7 +6,7 @@
 
 ### 🧰 Languages and Tools
 
-[![My Skills](https://skillicons.dev/icons?i=css,go,html,javascript,nodejs,react,redux,nextjs,tailwindcss,typescript,electron,git,github,vscode,docker,aws,azure,gcp,postgresql,mysql,mongodb,prisma,figma,postman&perline=8)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=css,go,html,javascript,nodejs,react,redux,nextjs,tailwindcss,typescript,electron,git,github,vscode,docker,aws,azure,gcp,postgresql,mysql,mongodb,prisma,figma,postman&perline=12)](https://skillicons.dev)
 
 ### 📊 Statistics
 
