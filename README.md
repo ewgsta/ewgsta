@@ -12,8 +12,8 @@
 
 <br/>
 <p align="center">
-  <a href="https://github.com/ewgsta"><img alt="ewgsta's GitHub Stats" src="https://github-stats-alpha.vercel.app/api?username=ewgsta&cc=classic&theme=react&hide_border=true&count_private=true&bg_color=0D1117" /></a>
-  <a href="https://github.com/ewgsta"><img alt="ewgsta's Top Languages" src="https://github-stats-alpha.vercel.app/api/top-langs/?username=ewgsta&cc=classic&theme=react&hide_border=true&count_private=true&layout=compact&langs_count=8&bg_color=0D1117" /></a>
+      <a href="https://github.com/ewgsta"><img alt="ewgsta's Github Stats" src="https://github-readme-stats-ochre-psi.vercel.app/api?username=ewgsta&show_icons=true&count_private=true&theme=react&hide_border=true&bg_color=0D1117&cache_seconds=3600" /></a>
+  <a href="https://github.com/ewgsta"><img alt="ewgsta's Top Languages" src="https://github-readme-stats-ochre-psi.vercel.app/api/top-langs/?username=ewgsta&langs_count=8&count_private=true&layout=compact&theme=react&hide_border=true&bg_color=0D1117&cache_seconds=3600" /></a>
 </p>
 <br/>
 
