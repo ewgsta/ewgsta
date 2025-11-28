@@ -6,7 +6,7 @@
 
 ### 🧰 Kullandığım Araç ve Teknolojiler
 
-[![sıkıldım](https://skillicons.dev/icons?i=css,html,javascript,nodejs,react,nextjs,tailwindcss,typescript,electron,git,github,vscode,docker,aws,azure,postgresql,mysql,mongodb,prisma,figma,postman&perline=11)](https://skillicons.dev)
+[![sıkıldım](https://skillicons.dev/icons?i=css,html,javascript,nodejs,react,nextjs,tailwindcss,typescript,electron,git,github,vscode,docker,aws,postgresql,mysql,mongodb,prisma,figma,postman&perline=10)](https://skillicons.dev)
 
 ### İstatistiklerim
 
