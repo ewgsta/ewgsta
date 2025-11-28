@@ -4,11 +4,11 @@
 
 ---
 
-### 🧰 Languages and Tools
+### 🧰 Kullandığım Araç ve Teknolojiler
 
-[![My Skills](https://skillicons.dev/icons?i=css,html,javascript,nodejs,react,nextjs,tailwindcss,typescript,electron,git,github,vscode,docker,aws,azure,postgresql,mysql,mongodb,prisma,figma,postman&perline=8)](https://skillicons.dev)
+[![sıkıldım](https://skillicons.dev/icons?i=css,html,javascript,nodejs,react,nextjs,tailwindcss,typescript,electron,git,github,vscode,docker,aws,azure,postgresql,mysql,mongodb,prisma,figma,postman&perline=11)](https://skillicons.dev)
 
-### 📊 Statistics
+### İstatistiklerim
 
   <br/>
   <p align="center">
@@ -17,7 +17,7 @@
   <p/>
   <br/>
 
-### 📞 Contact
+### İletişim
 <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=ewgstacontact@gmail.com&su=Merhaba!">
 <img src="https://shields.io/badge/ewgstacontact@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" </a>
 <a href="https://discord.com/users/752050889958883380" target="_blank"><img src="https://shields.io/badge/ewgsta-111111.svg?&style=for-the-badge&logo=discord&color=36393f"></a>
