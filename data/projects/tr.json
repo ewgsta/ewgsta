@@ -1,1 +1,7 @@
-
+{
+    "title": "Animely",
+    "description": "Animely, terminaliniz üzerinden anime izlemenizi ve indirmenizi sağlayan güçlü, şık ve basit bir CLI aracıdır.",
+    "image": "https://r2.fakecrime.bio/uploads/8156af6c-e41e-47e2-a7c4-3312cd4c1764.jpg",
+    "link": "https://github.com/ewgsta/animely",
+    "tags": ["Node.js", "CLI", "Anime", "TR"]
+  }
