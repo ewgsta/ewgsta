@@ -16,6 +16,10 @@
   <a href="https://github.com/ewgsta"><img alt="ewgsta's Top Languages" src="https://github-readme-stats-ochre-psi.vercel.app/api/top-langs/?username=ewgsta&langs_count=8&count_private=true&layout=compact&theme=react&hide_border=true&bg_color=0D1117&cache_seconds=3600" /></a>
 </p>
 <br/>
+<p align="center">
+  <a href="https://anilist.co/user/ewgsta"><img alt="ewgsta's Anilist Profile" src="https://geniusanime.com/widgets/anilist?username=ewgsta" /></a>
+</p>
+
 
 ### İletişim
 <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=ewgstacontact@gmail.com&su=Merhaba!">
