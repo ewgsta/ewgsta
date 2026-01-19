@@ -1,3 +1,7 @@
+<p align="right">
+  <img src="https://count.getloli.com/@ewgsta" alt="ewgsta-counter" />
+</p>
+
 # Furkan 👋
 ## Kendi halinde bir aptal.
 </div>
@@ -30,6 +34,3 @@
 <img src="https://shields.io/badge/ewgstacontact@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" </a>
 <a href="https://discord.com/users/752050889958883380" target="_blank"><img src="https://shields.io/badge/ewgsta-111111.svg?&style=for-the-badge&logo=discord&color=36393f"></a>
 
-<p align="right">
-  <img src="https://count.getloli.com/@ewgsta" alt="ewgsta-counter" />
-</p>
