@@ -1,10 +1,8 @@
-<p align="right">
-  <img src="https://count.getloli.com/@ewgsta" alt="ewgsta-counter" />
-</p>
-
-# Furkan 👋
-## Kendi halinde bir aptal.
-</div>
+<h1>
+  Furkan 👋
+  <img src="https://count.getloli.com/@ewgsta" alt="ewgsta-counter" align="right" />
+</h1>
+<h2>Kendi halinde birisi.</h2>
 
 ---
 
