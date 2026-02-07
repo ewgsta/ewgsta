@@ -9,8 +9,8 @@ findMeOnLabel: Bana ulaş
 projectsLabel: Projelerim
 postsLabel: Paylaşımlarım
 readMoreLabel: Daha fazlasını görüntüle
-viewAllProjectsLabel: Tüm projelerimi görüntüle
-viewAllPostsLabel: Tüm paylaşımlarımı görüntüle
+viewAllProjectsLabel: Projelerim
+viewAllPostsLabel: Paylaşımlarım
 links:
   - platform: fa-brands fa-instagram
     url: https://instagram.com/furkn05_
