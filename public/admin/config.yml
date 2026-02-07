@@ -43,7 +43,7 @@ collections:
         file: "src/content/site/config.yaml"
         fields:
           # SEO Settings
-          - {label: "Site Title", name: "siteTitle", widget: "string", default: "Houtarou Oreki"}
+          - {label: "Site Title", name: "siteTitle", widget: "string", default: "Furkan (ewgsta)"}
           - {label: "Site Description (SEO)", name: "siteDescription", widget: "text", default: "Personal website and blog"}
           - {label: "Site URL", name: "siteUrl", widget: "string", default: "https://www.ewgsta.me"}
           - {label: "Site Language", name: "siteLanguage", widget: "string", default: "tr"}
@@ -53,9 +53,9 @@ collections:
           
           # Branding
           - {label: "Logo URL", name: "logoUrl", widget: "string", default: "https://github.com/ewgsta.png"}
-          - {label: "Logo Text", name: "logoText", widget: "string", default: "Houtarou Oreki"}
-          - {label: "Footer Text", name: "footerText", widget: "string", default: "© 2026 Houtarou Oreki. All rights reserved."}
-          - {label: "Hero Title", name: "heroTitle", widget: "string", default: "Houtarou Oreki"}
+          - {label: "Logo Text", name: "logoText", widget: "string", default: "Furkan"}
+          - {label: "Footer Text", name: "footerText", widget: "string", default: "© 2026 Furkan. All rights reserved."}
+          - {label: "Hero Title", name: "heroTitle", widget: "string", default: "Furkan :3"}
           - {label: "Quote Text", name: "quoteText", widget: "string", default: "What is meant to be will be..."}
           
           # Labels
