@@ -10,8 +10,9 @@ export const projects = Object.keys(projectFiles).map(key => {
         name: data.title || slug,
         desc: data.description || '',
         link: data.link || '#',
-        tech: data.tech || [],
-        ...data,
+        tech: Array.isArray(data.tech) ? data.tech : [],
+        featured: data.featured === true,
+        body: content,
         content
     };
 });
