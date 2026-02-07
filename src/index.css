@@ -460,3 +460,9 @@ footer {
   color: var(--text-muted);
   font-style: italic;
 }
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 15px;
+  }
+}
