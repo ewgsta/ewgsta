@@ -5,6 +5,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Decap CMS</title>
+  <!-- Explicitly link to the configuration file to avoid 404s on /admin (without slash) -->
+  <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
   <!-- Include the script that builds the page and powers Netlify CMS -->
   <script src="https://unpkg.com/decap-cms@3.1.2/dist/decap-cms.js"></script>
   <style>
