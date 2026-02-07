@@ -1,3 +1,5 @@
+postsLabel: Paylaşımlarım
+backToPostsLabel: ← Paylaşımlara Dön
 siteTitle: Furkan (ewgsta)
 siteDescription: Kendi halinde Full Stack geliştirici.
 siteUrl: https://www.ewgsta.me
@@ -13,20 +15,22 @@ heroTitle: Furkan :3
 quoteText: Kendi halinde Full Stack geliştirici.
 findMeOnLabel: Bana ulaş
 projectsLabel: Projelerim
-postsLabel: Paylaşımlarım
 readMoreLabel: Daha fazlasını görüntüle
 viewAllProjectsLabel: Projelerim
 viewAllPostsLabel: Paylaşımlarım
-backToHomeLabel: ← Ana Sayfaya Dön
-backToProjectsLabel: ← Projelere Dön
-backToPostsLabel: ← Paylaşımlara Dön
 postsSlug: paylasımlar
 projectsSlug: projeler
 searchPlaceholder: Post ve projelerde ara...
 searchNoResults: '"{query}" için sonuç bulunamadı'
 searchEmptyState: Aramaya başlamak için yazın...
+backToHomeLabel: ← Ana Sayfaya Dön
+backToProjectsLabel: ← Projelere Dön
 links:
   - platform: fa-brands fa-instagram
     url: https://instagram.com/furkn05_
   - platform: fa-brands fa-github
     url: https://github.com/ewgsta
+  - platform: fa-brands fa-reddit
+    url: https://www.reddit.com/user/ewgsta/
+  - platform: fa-brands fa-discord
+    url: https://discord.com/users/752050889958883380
