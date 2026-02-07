@@ -10,13 +10,13 @@ if (configFile[key]) {
     siteData = parseYaml(configFile[key]);
 }
 
-export const siteTitle = siteData.siteTitle || 'Houtarou Oreki';
+export const siteTitle = siteData.siteTitle || 'Site Title Here';
 export const logoUrl = siteData.logoUrl || 'https://github.com/ewgsta.png';
-export const logoText = siteData.logoText || 'Houtarou Oreki';
-export const footerText = siteData.footerText || '© 2026 Houtarou Oreki. All rights reserved.';
+export const logoText = siteData.logoText || 'Logo Text Here';
+export const footerText = siteData.footerText || '© 2026 Site Title Here. All rights reserved.';
 
-export const heroTitle = siteData.heroTitle || 'Houtarou Oreki';
-export const quoteText = siteData.quoteText || 'What is meant to be will be, what is not meant to be should not be forced.';
+export const heroTitle = siteData.heroTitle || 'Hero Title Here';
+export const quoteText = siteData.quoteText || 'Quote Text Here';
 
 export const findMeOnLabel = siteData.findMeOnLabel || 'Find me on';
 export const projectsLabel = siteData.projectsLabel || 'Projects';

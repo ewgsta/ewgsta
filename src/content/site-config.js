@@ -5,8 +5,8 @@ export const siteConfig = singleton({
     label: 'Site Config',
     path: 'src/content/site/config',
     schema: {
-        siteName: fields.text({ label: 'Site Name', defaultValue: 'Houtarou Oreki' }),
-        quoteText: fields.text({ label: 'Quote', defaultValue: 'What is meant to be will be, what is not meant to be should not be forced.' }),
+        siteName: fields.text({ label: 'Site Name', defaultValue: 'Site Name Here' }),
+        quoteText: fields.text({ label: 'Quote', defaultValue: 'Quote Here' }),
         socialLinks: fields.array(
             fields.object({
                 platform: fields.select({

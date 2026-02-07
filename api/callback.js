@@ -1,48 +1,48 @@
 
 export default async function handler(req, res) {
-    const { code } = req.query;
-    const clientId = process.env.OAUTH_CLIENT_ID || 'Ov23liUXss5HXRkqGzb4';
-    const clientSecret = process.env.OAUTH_CLIENT_SECRET;
+  const { code } = req.query;
+  const clientId = 'Ov23liUXss5HXRkqGzb4';
+  const clientSecret = process.env.OAUTH_CLIENT_SECRET;
 
-    if (!code) {
-        return res.status(400).send('Missing code parameter');
+  if (!code) {
+    return res.status(400).send('Missing code parameter');
+  }
+
+  if (!clientSecret) {
+    return res.status(500).send('Missing OAUTH_CLIENT_SECRET environment variable on server.');
+  }
+
+  try {
+    const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        client_id: clientId,
+        client_secret: clientSecret,
+        code,
+      }),
+    });
+
+    const data = await tokenResponse.json();
+
+    if (data.error) {
+      throw new Error(data.error_description || data.error);
     }
 
-    if (!clientSecret) {
-        return res.status(500).send('Missing OAUTH_CLIENT_SECRET environment variable on server.');
+    const { access_token } = data;
+
+    if (!access_token) {
+      throw new Error('No access token received from GitHub');
     }
 
-    try {
-        const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify({
-                client_id: clientId,
-                client_secret: clientSecret,
-                code,
-            }),
-        });
+    // Properly escape for JS string
+    const escapedToken = access_token.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
-        const data = await tokenResponse.json();
-
-        if (data.error) {
-            throw new Error(data.error_description || data.error);
-        }
-
-        const { access_token } = data;
-
-        if (!access_token) {
-            throw new Error('No access token received from GitHub');
-        }
-
-        // Properly escape for JS string
-        const escapedToken = access_token.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-
-        // Use the proper Netlify/Decap CMS OAuth handshake
-        const content = `<!DOCTYPE html>
+    // Use the proper Netlify/Decap CMS OAuth handshake
+    const content = `<!DOCTYPE html>
 <html>
 <head>
   <title>Authorizing...</title>
@@ -58,15 +58,8 @@ export default async function handler(req, res) {
       var token = '${escapedToken}';
       var provider = 'github';
       
-      // The Netlify/Decap CMS OAuth handshake:
-      // 1. Popup sends "authorizing:github" to opener
-      // 2. Opener responds with any message
-      // 3. Popup sends token in response
-      
       function receiveMessage(e) {
-        console.log('Received message from opener:', e.data);
-        
-        // When we receive ANY message from opener, send the token
+        // Send the token when we receive a message from the opener
         window.opener.postMessage(
           'authorization:' + provider + ':success:' + JSON.stringify({ token: token, provider: provider }),
           e.origin
@@ -75,20 +68,19 @@ export default async function handler(req, res) {
       
       window.addEventListener('message', receiveMessage, false);
       
-      // Start the handshake - tell opener we're authorizing
-      console.log('Sending authorizing message...');
+      // Start the handshake
       window.opener.postMessage('authorizing:' + provider, '*');
     })();
   </script>
 </body>
 </html>`;
 
-        res.setHeader('Content-Type', 'text/html');
-        res.status(200).send(content);
+    res.setHeader('Content-Type', 'text/html');
+    res.status(200).send(content);
 
-    } catch (err) {
-        console.error('OAuth Callback Error:', err);
-        const errorContent = `<!DOCTYPE html>
+  } catch (err) {
+    console.error('OAuth Callback Error:', err);
+    const errorContent = `<!DOCTYPE html>
 <html>
 <head><title>Authentication Error</title></head>
 <body style="font-family: sans-serif; text-align: center; padding: 50px; background: #1a1a2e; color: #eee;">
@@ -97,7 +89,7 @@ export default async function handler(req, res) {
   <p><button onclick="window.close()" style="padding: 10px 20px; cursor: pointer;">Close</button></p>
 </body>
 </html>`;
-        res.setHeader('Content-Type', 'text/html');
-        res.status(500).send(errorContent);
-    }
+    res.setHeader('Content-Type', 'text/html');
+    res.status(500).send(errorContent);
+  }
 }
