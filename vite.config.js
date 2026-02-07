@@ -11,7 +11,6 @@ export default defineConfig({
       enforce: 'pre',
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
-          // Serve admin HTML directly for /admin routes
           if (req.url === '/admin' || req.url === '/admin/' || req.url?.startsWith('/admin/index.html')) {
             const adminHtmlPath = resolve(__dirname, 'public/admin/index.html')
             try {
@@ -19,7 +18,7 @@ export default defineConfig({
               res.setHeader('Content-Type', 'text/html')
               res.statusCode = 200
               res.end(html)
-              return // Important: don't call next()
+              return
             } catch (e) {
               console.error('Failed to serve admin HTML:', e)
             }
