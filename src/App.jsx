@@ -7,23 +7,24 @@ import Posts from './pages/Posts/index';
 import PostDetail from './pages/Posts/PostDetail';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/Projects/ProjectDetail';
-import Meta from './components/Meta';
+import SEO from './components/SEO';
 import SearchModal from './components/SearchModal';
+import { postsSlug, projectsSlug } from './data/siteData';
 
 function App() {
   return (
     <div className="container">
-      <Meta />
+      <SEO />
       <SearchModal />
       <Header />
 
       <main style={{ flex: 1, width: '100%' }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/posts" element={<Posts />} />
-          <Route path="/posts/:slug" element={<PostDetail />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:slug" element={<ProjectDetail />} />
+          <Route path={`/${postsSlug}`} element={<Posts />} />
+          <Route path={`/${postsSlug}/:slug`} element={<PostDetail />} />
+          <Route path={`/${projectsSlug}`} element={<Projects />} />
+          <Route path={`/${projectsSlug}/:slug`} element={<ProjectDetail />} />
         </Routes>
       </main>
 

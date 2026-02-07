@@ -5,8 +5,8 @@ backend:
   base_url: https://www.ewgsta.me
   auth_endpoint: api/auth
 
-media_folder: "public/images/uploads" # Media files will be stored in the repo under public/images/uploads
-public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
 
 collections:
   - name: "posts"
@@ -17,6 +17,7 @@ collections:
     fields:
       - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
       - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text", required: false}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
@@ -41,13 +42,23 @@ collections:
         label: "Global Configuration"
         file: "src/content/site/config.yaml"
         fields:
+          # SEO Settings
           - {label: "Site Title", name: "siteTitle", widget: "string", default: "Houtarou Oreki"}
+          - {label: "Site Description (SEO)", name: "siteDescription", widget: "text", default: "Personal website and blog"}
+          - {label: "Site URL", name: "siteUrl", widget: "string", default: "https://www.ewgsta.me"}
+          - {label: "Site Language", name: "siteLanguage", widget: "string", default: "tr"}
+          - {label: "Site Author", name: "siteAuthor", widget: "string", default: "Furkan"}
+          - {label: "Site Keywords", name: "siteKeywords", widget: "string", default: "blog, portfolio, developer", required: false}
+          - {label: "OG Image (Social Preview)", name: "ogImage", widget: "image", required: false}
+          
+          # Branding
           - {label: "Logo URL", name: "logoUrl", widget: "string", default: "https://github.com/ewgsta.png"}
           - {label: "Logo Text", name: "logoText", widget: "string", default: "Houtarou Oreki"}
           - {label: "Footer Text", name: "footerText", widget: "string", default: "© 2026 Houtarou Oreki. All rights reserved."}
           - {label: "Hero Title", name: "heroTitle", widget: "string", default: "Houtarou Oreki"}
           - {label: "Quote Text", name: "quoteText", widget: "string", default: "What is meant to be will be..."}
           
+          # Labels
           - {label: "Find Me On Label", name: "findMeOnLabel", widget: "string", default: "Find me on"}
           - {label: "Projects Label", name: "projectsLabel", widget: "string", default: "Projects"}
           - {label: "Posts Label", name: "postsLabel", widget: "string", default: "Posts"}
@@ -55,10 +66,16 @@ collections:
           - {label: "View All Projects Label", name: "viewAllProjectsLabel", widget: "string", default: "View All Projects"}
           - {label: "View All Posts Label", name: "viewAllPostsLabel", widget: "string", default: "View All Posts"}
           
+          # Route Slugs
+          - {label: "Posts URL Slug", name: "postsSlug", widget: "string", default: "posts"}
+          - {label: "Projects URL Slug", name: "projectsSlug", widget: "string", default: "projects"}
+          
+          # Search Labels
           - {label: "Search Placeholder", name: "searchPlaceholder", widget: "string", default: "Search posts and projects..."}
           - {label: "Search No Results Text", name: "searchNoResults", widget: "string", default: "No results found for \"{query}\""}
           - {label: "Search Empty State Text", name: "searchEmptyState", widget: "string", default: "Type to start searching..."}
 
+          # Social Links
           - label: "Social Links"
             name: "links"
             widget: "list"

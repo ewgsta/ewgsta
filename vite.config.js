@@ -1,11 +1,38 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import Sitemap from 'vite-plugin-sitemap'
 import { resolve } from 'path'
 import fs from 'fs'
 
+// Dynamic routes for sitemap
+function getRoutes() {
+  const routes = ['/', '/posts', '/projects']
+
+  // Get post slugs
+  const postsDir = resolve(__dirname, 'src/content/posts')
+  if (fs.existsSync(postsDir)) {
+    const postFiles = fs.readdirSync(postsDir).filter(f => f.endsWith('.md'))
+    postFiles.forEach(file => {
+      const slug = file.replace('.md', '')
+      routes.push(`/posts/${slug}`)
+    })
+  }
+
+  // Get project slugs
+  const projectsDir = resolve(__dirname, 'src/content/projects')
+  if (fs.existsSync(projectsDir)) {
+    const projectFiles = fs.readdirSync(projectsDir).filter(f => f.endsWith('.md'))
+    projectFiles.forEach(file => {
+      const slug = file.replace('.md', '')
+      routes.push(`/projects/${slug}`)
+    })
+  }
+
+  return routes
+}
+
 export default defineConfig({
   plugins: [
-    // Admin redirect plugin - runs BEFORE other middlewares (no return statement)
     {
       name: 'admin-static-serve',
       enforce: 'pre',
@@ -20,7 +47,7 @@ export default defineConfig({
               res.end(html)
               return
             } catch (e) {
-              console.error('Failed to serve admin HTML:', e)
+              // Admin HTML dosyası bulunamadı
             }
           }
           next()
@@ -28,6 +55,19 @@ export default defineConfig({
       }
     },
     react(),
+    Sitemap({
+      hostname: 'https://www.ewgsta.me',
+      dynamicRoutes: getRoutes(),
+      exclude: ['/admin', '/admin/'],
+      changefreq: 'weekly',
+      priority: 0.8,
+      lastmod: new Date(),
+      generateRobotsTxt: true,
+      robots: [
+        { userAgent: '*', allow: '/' },
+        { userAgent: '*', disallow: '/admin' }
+      ]
+    }),
   ],
   server: {
     host: '127.0.0.1',

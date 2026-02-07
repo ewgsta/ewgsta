@@ -1,5 +1,4 @@
 :root {
-  /* Görselden alınan daha hassas renkler (Dark Theme - Default) */
   --bg-color: #121212;
   --text-main: #cecece;
   --text-muted: #757575;
@@ -14,18 +13,14 @@
   --text-main: #333333;
   --text-muted: #666666;
   --accent-pink: #d16d79;
-  /* Light modda da aynı kalabilir veya koyulaştırılabilir #b05560 */
   --border-dashed: 1px dashed #ccc;
 }
 
 html {
-  /* İki kere CTRL+ yapmanıza denk gelmesi için boyutu büyüttüm */
   font-size: 19px;
   -webkit-font-smoothing: antialiased;
-  /* Fontları daha pürüzsüz yapar */
   -moz-osx-font-smoothing: grayscale;
   overflow-y: scroll;
-  /* Scrollbar her zaman gözüksün, sayfa geçişlerinde oynama yapmasın */
 }
 
 * {
@@ -42,12 +37,9 @@ body {
   min-height: 100vh;
 }
 
-/* Ana Taşıyıcıyı Genişlettik */
-/* Ana Taşıyıcıyı Genişlettik */
 .container {
   width: 100%;
   max-width: 860px;
-  /* Daha geniş alan */
   padding: 60px 20px;
   min-height: 100vh;
   display: flex;
@@ -65,13 +57,11 @@ a:hover {
   color: #fff;
 }
 
-/* HEADER ALANI */
 header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 70px;
-  /* Boşluk artırıldı */
 }
 
 .brand-group {
@@ -80,7 +70,6 @@ header {
 }
 
 .logo-img {
-  /* Görseldeki beyaz çiçeği simüle eden ikon alanı */
   font-size: 2rem;
   color: #e0e0e0;
   line-height: 1;
@@ -135,7 +124,6 @@ header {
   color: #fff;
 }
 
-/* ORTAK BAŞLIK STİLİ */
 h2.section-header {
   font-size: 1.15rem;
   font-weight: 700;
@@ -148,7 +136,6 @@ h2.section-header {
   color: var(--text-main);
 }
 
-/* LİSTE YAPISI (Grid ile tam hizalama) */
 .post-list {
   list-style: none;
   margin-bottom: 40px;
@@ -157,7 +144,6 @@ h2.section-header {
 .post-item {
   display: grid;
   grid-template-columns: 140px 1fr;
-  /* Tarih alanı sabit, başlık esnek */
   margin-bottom: 14px;
   align-items: baseline;
 }
@@ -166,7 +152,6 @@ h2.section-header {
   color: var(--text-muted);
   font-size: 0.95rem;
   font-family: var(--font-mono);
-  /* Tarihler için monospace */
 }
 
 .post-detail-title {
@@ -180,7 +165,6 @@ h2.section-header {
   color: var(--text-main);
   text-decoration: underline;
   text-decoration-color: #444;
-  /* Çok silik alt çizgi */
   text-underline-offset: 4px;
   font-weight: 400;
 }
@@ -198,7 +182,6 @@ h2.section-header {
   text-decoration-color: #444;
 }
 
-/* AYIRAÇ */
 hr.divider {
   border: 0;
   border-top: var(--border-dashed);
@@ -206,7 +189,6 @@ hr.divider {
   opacity: 0.6;
 }
 
-/* PROJELER LİSTESİ */
 .project-list {
   list-style: none;
 }
@@ -227,7 +209,6 @@ hr.divider {
   color: #999;
 }
 
-/* FOOTER ALANI */
 .quote-text {
   color: var(--text-muted);
   font-size: 0.95rem;
@@ -271,7 +252,6 @@ footer {
   color: var(--text-muted);
 }
 
-/* Light Theme Specific Overrides for Elements with Hardcoded Colors */
 [data-theme='light'] .post-detail-title {
   color: var(--text-main);
 }
@@ -284,28 +264,23 @@ footer {
 [data-theme='light'] .social-row a:hover,
 [data-theme='light'] .header-icons i:hover {
   color: var(--accent-pink);
-  /* Hover'da beyaz yerine pembe/accent olsun light modda görünürlük için */
 }
 
 [data-theme='light'] .logo-img {
   color: var(--text-main);
 }
 
-/* MARKDOWN STYLE OVERRIDES */
 .markdown-content ul,
 .markdown-content ol {
   margin-bottom: 20px;
   padding-left: 25px;
-  /* Standart girinti */
   list-style-position: outside;
-  /* Noktaları metnin dışında tut, ama container içinde */
 }
 
 .markdown-content li {
   margin-bottom: 6px;
 }
 
-/* SEARCH MODAL STYLES */
 .search-modal-overlay {
   position: fixed;
   top: 0;
@@ -392,7 +367,6 @@ footer {
   padding: 10px 0;
 }
 
-/* Scrollbar hidden but functional */
 .search-results-list::-webkit-scrollbar {
   width: 6px;
 }
@@ -457,7 +431,6 @@ footer {
   font-size: 0.65rem;
   padding: 2px 6px;
   background: rgba(209, 109, 121, 0.15);
-  /* accent-pink opacity */
   color: var(--accent-pink);
   border-radius: 4px;
   text-transform: uppercase;

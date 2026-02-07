@@ -4,7 +4,6 @@ export function parseYaml(yamlString) {
     try {
         return yaml.load(yamlString) || {};
     } catch (e) {
-        console.error('Error parsing YAML:', e);
         return {};
     }
 }
@@ -18,7 +17,6 @@ export function parseFrontmatter(markdown) {
             const data = yaml.load(match[1]);
             return { data, content: match[2] };
         } catch (e) {
-            console.error('Error parsing frontmatter:', e);
             return { data: {}, content: markdown };
         }
     }
@@ -32,19 +30,19 @@ export async function getProjects() {
     for (const path in modules) {
         const rawContent = await modules[path]();
         const { data } = parseFrontmatter(rawContent);
-        // Map to component props format
+        const filename = path.split('/').pop().replace('.md', '');
+
         projects.push({
             name: data.title || 'Untitled Project',
             desc: data.description || '',
             link: data.link || '#',
-            isPinned: data.featured === true, // Map Decap 'featured' field to 'isPinned' used in components
+            isPinned: data.featured === true,
             tech: data.tech || [],
-            // Keep original data just in case
+            slug: filename,
             ...data
         });
     }
 
-    // Sort pinned first? Or just usage based.
     return projects;
 }
 
@@ -58,22 +56,18 @@ export async function getPosts() {
             const { data = {} } = parseFrontmatter(rawContent);
             const filename = path.split('/').pop().replace('.md', '');
 
-            // Try to extract date from filename if missing in frontmatter
             let dateObj;
             if (data.date) {
                 dateObj = new Date(data.date);
             } else {
-                // Try YYYY-MM-DD pattern
                 const dateMatch = filename.match(/^(\d{4})-(\d{2})-(\d{2})/);
                 if (dateMatch) {
                     dateObj = new Date(`${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}`);
                 } else {
-                    // Fallback to now (or maybe stat mtime if possible, but not in browser)
                     dateObj = new Date();
                 }
             }
 
-            // Validate date
             if (isNaN(dateObj.getTime())) {
                 dateObj = new Date();
             }
@@ -85,14 +79,13 @@ export async function getPosts() {
                 slug: filename,
                 thumbnail: data.thumbnail,
                 layout: data.layout || 'blog',
-                description: data.description || '', // Add description if available
+                description: data.description || '',
                 ...data
             });
         } catch (e) {
-            console.error("Error processing post:", path, e);
+            // Post işleme hatası - sessizce atla
         }
     }
 
-    // Sort by date descending
     return posts.sort((a, b) => b.rawDate - a.rawDate);
 }

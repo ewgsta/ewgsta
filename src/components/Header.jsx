@@ -27,7 +27,6 @@ const Header = () => {
                     onClick={toggleTheme}
                     style={{ cursor: 'pointer' }}
                 ></i>
-                {/* Language icon removed as requested */}
             </div>
         </header>
     );

@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import Fuse from 'fuse.js';
 import { useNavigate } from 'react-router-dom';
 import { getAllSearchableContent } from '../utils/searchData';
 import { useSearch } from '../context/SearchContext';
-import { searchPlaceholder, searchNoResults, searchEmptyState, postsLabel, projectsLabel } from '../data/siteData';
+import { searchPlaceholder, searchNoResults, searchEmptyState, postsLabel, projectsLabel, postsSlug, projectsSlug } from '../data/siteData';
 
 export default function SearchModal() {
     const { isSearchOpen, closeSearch, toggleSearch } = useSearch();
@@ -15,12 +14,10 @@ export default function SearchModal() {
     const inputRef = useRef(null);
     const navigate = useNavigate();
 
-    // Load data once
     useEffect(() => {
         getAllSearchableContent().then(setData);
     }, []);
 
-    // Initialize Fuse
     const fuse = useMemo(() => new Fuse(data, {
         keys: [
             { name: 'title', weight: 0.7 },
@@ -31,21 +28,18 @@ export default function SearchModal() {
         ignoreLocation: true,
     }), [data]);
 
-    // Handle Search
     useEffect(() => {
         if (!query.trim()) {
             setResults([]);
             return;
         }
         const searchResults = fuse.search(query).map(r => r.item);
-        setResults(searchResults.slice(0, 5)); // Limit to 5 results
+        setResults(searchResults.slice(0, 5));
         setSelectedIndex(0);
     }, [query, fuse]);
 
-    // Keyboard Shortcuts
     useEffect(() => {
         const handleKeyDown = (e) => {
-            // Toggle with Ctrl+K or Cmd+K
             if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                 e.preventDefault();
                 toggleSearch();
@@ -73,7 +67,6 @@ export default function SearchModal() {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [isSearchOpen, results, selectedIndex, toggleSearch, closeSearch]);
 
-    // Focus input on open
     useEffect(() => {
         if (isSearchOpen) {
             setTimeout(() => inputRef.current?.focus(), 50);
@@ -88,9 +81,9 @@ export default function SearchModal() {
     const handleSelect = (item) => {
         closeSearch();
         if (item.type === 'post') {
-            navigate(`/posts/${item.slug}`);
+            navigate(`/${postsSlug}/${item.slug}`);
         } else if (item.type === 'project') {
-            navigate(`/projects`); // Or specific project page if exists
+            navigate(`/${projectsSlug}/${item.slug}`);
         }
     };
 

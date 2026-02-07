@@ -79,7 +79,6 @@ export default async function handler(req, res) {
     res.status(200).send(content);
 
   } catch (err) {
-    console.error('OAuth Callback Error:', err);
     const errorContent = `<!DOCTYPE html>
 <html>
 <head><title>Authentication Error</title></head>

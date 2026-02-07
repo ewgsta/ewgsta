@@ -1,7 +1,7 @@
 import PostItem from './PostItem';
 import SectionHeader from './SectionHeader';
 import { Link } from 'react-router-dom';
-import { postsLabel, readMoreLabel } from '../data/siteData';
+import { postsLabel, readMoreLabel, postsSlug } from '../data/siteData';
 
 const PostList = ({ posts }) => {
     return (
@@ -12,7 +12,7 @@ const PostList = ({ posts }) => {
                     <PostItem key={index} date={post.date} title={post.title} slug={post.slug} />
                 ))}
             </ul>
-            <Link to="/posts" className="read-more-link">{readMoreLabel} →</Link>
+            <Link to={`/${postsSlug}`} className="read-more-link">{readMoreLabel} →</Link>
         </section>
     );
 };

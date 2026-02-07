@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { projectsSlug } from '../data/siteData';
 
 const ProjectItem = ({ name, desc, link, slug, showReadMore }) => {
     return (
@@ -8,7 +9,7 @@ const ProjectItem = ({ name, desc, link, slug, showReadMore }) => {
                 <span className="project-desc">{desc}</span>
             </div>
             {showReadMore && slug && (
-                <Link to={`/projects/${slug}`} style={{ fontSize: '0.8rem', marginTop: '4px', color: 'var(--text-muted)', textDecoration: 'underline' }}>
+                <Link to={`/${projectsSlug}/${slug}`} style={{ fontSize: '0.8rem', marginTop: '4px', color: 'var(--text-muted)', textDecoration: 'underline' }}>
                     Read more →
                 </Link>
             )}
