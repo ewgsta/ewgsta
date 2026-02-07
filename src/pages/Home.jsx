@@ -16,12 +16,11 @@ const Home = () => {
                 const projects = await getProjects();
                 const posts = await getPosts();
 
-                // Filter for featured projects
-                setPinnedProjects(projects.filter(p => p.isPinned || p.featured));
+                // Show first 5 projects
+                setPinnedProjects(projects.slice(0, 5));
 
-                // Sort posts by date and take first 5
-                // getPosts already sorts them, but let's double check or rely on util
-                setRecentPosts(posts.slice(0, 5));
+                // Sort posts by date and take first 10
+                setRecentPosts(posts.slice(0, 10));
             } catch (err) {
                 console.error("Failed to load content for Home:", err);
             }

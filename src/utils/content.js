@@ -17,7 +17,7 @@ export function parseFrontmatter(markdown) {
 }
 
 export async function getProjects() {
-    const modules = import.meta.glob('/src/content/projects/*.md', { query: '?raw', import: 'default' });
+    const modules = import.meta.glob('../content/projects/*.md', { query: '?raw', import: 'default' });
     const projects = [];
 
     for (const path in modules) {
@@ -40,27 +40,48 @@ export async function getProjects() {
 }
 
 export async function getPosts() {
-    const modules = import.meta.glob('/src/content/posts/*.md', { query: '?raw', import: 'default' });
+    const modules = import.meta.glob('../content/posts/*.md', { query: '?raw', import: 'default' });
     const posts = [];
 
     for (const path in modules) {
-        const rawContent = await modules[path]();
-        const { data } = parseFrontmatter(rawContent);
-        const filename = path.split('/').pop().replace('.md', '');
-        // Clean slug for date prefix if needed, though usually handled by filename convention in Decap slug pattern.
-        // slug: "{{year}}-{{month}}-{{day}}-{{slug}}" -> e.g., 2024-01-01-my-post.md
+        try {
+            const rawContent = await modules[path]();
+            const { data = {} } = parseFrontmatter(rawContent);
+            const filename = path.split('/').pop().replace('.md', '');
 
-        // We can use the filename as slug directly, which matches the route /posts/:slug
+            // Try to extract date from filename if missing in frontmatter
+            let dateObj;
+            if (data.date) {
+                dateObj = new Date(data.date);
+            } else {
+                // Try YYYY-MM-DD pattern
+                const dateMatch = filename.match(/^(\d{4})-(\d{2})-(\d{2})/);
+                if (dateMatch) {
+                    dateObj = new Date(`${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}`);
+                } else {
+                    // Fallback to now (or maybe stat mtime if possible, but not in browser)
+                    dateObj = new Date();
+                }
+            }
 
-        posts.push({
-            title: data.title || filename,
-            date: data.date ? new Date(data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '',
-            rawDate: data.date ? new Date(data.date) : new Date(), // For sorting
-            slug: filename,
-            thumbnail: data.thumbnail,
-            layout: data.layout || 'blog',
-            // ...data
-        });
+            // Validate date
+            if (isNaN(dateObj.getTime())) {
+                dateObj = new Date();
+            }
+
+            posts.push({
+                title: data.title || filename,
+                date: dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                rawDate: dateObj,
+                slug: filename,
+                thumbnail: data.thumbnail,
+                layout: data.layout || 'blog',
+                description: data.description || '', // Add description if available
+                ...data
+            });
+        } catch (e) {
+            console.error("Error processing post:", path, e);
+        }
     }
 
     // Sort by date descending

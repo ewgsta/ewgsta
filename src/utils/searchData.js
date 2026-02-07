@@ -29,7 +29,7 @@ function parseFrontmatter(markdown) {
  */
 export async function getAllSearchableContent() {
     // Import all markdown files from content directory as raw strings
-    const modules = import.meta.glob('/src/content/**/*.md', { query: '?raw', import: 'default' });
+    const modules = import.meta.glob('../content/**/*.md', { query: '?raw', import: 'default' });
 
     const items = [];
 
