@@ -3,8 +3,9 @@ import SectionHeader from '../components/SectionHeader';
 import ProjectItem from '../components/ProjectItem';
 import { projects } from '../data/projects';
 import { Link } from 'react-router-dom';
-import { viewAllProjectsLabel, projectsLabel } from '../data/siteData';
+import { viewAllProjectsLabel, projectsLabel, backToHomeLabel } from '../data/siteData';
 import SEO from '../components/SEO';
+import Divider from '../components/Divider';
 
 const Projects = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +26,7 @@ const Projects = () => {
             />
             <section>
                 <div style={{ marginBottom: '30px' }}>
-                    <Link to="/" style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>← Back to Home</Link>
+                    <Link to="/" style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{backToHomeLabel}</Link>
                 </div>
 
                 <SectionHeader title={viewAllProjectsLabel} />
@@ -64,6 +65,7 @@ const Projects = () => {
                 )}
 
                 <div style={{ marginBottom: '40px' }}></div>
+                <Divider />
             </section>
         </>
     );

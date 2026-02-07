@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import SectionHeader from '../../components/SectionHeader';
 import PostItem from '../../components/PostItem';
 import { posts } from '../../data/posts';
-import { viewAllPostsLabel, postsLabel } from '../../data/siteData';
+import { viewAllPostsLabel, postsLabel, backToHomeLabel } from '../../data/siteData';
 import SEO from '../../components/SEO';
+import Divider from '../../components/Divider';
+import { Link } from 'react-router-dom';
 
 const Posts = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -23,6 +25,10 @@ const Posts = () => {
                 description={`Tüm ${postsLabel.toLowerCase()} listesi`}
             />
             <section>
+                <div style={{ marginBottom: '30px' }}>
+                    <Link to="/" style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{backToHomeLabel}</Link>
+                </div>
+
                 <SectionHeader title={viewAllPostsLabel} />
                 <ul className="post-list">
                     {currentPosts.map((post) => (
@@ -57,6 +63,7 @@ const Posts = () => {
                 )}
 
                 <div style={{ marginBottom: '40px' }}></div>
+                <Divider />
             </section>
         </>
     );

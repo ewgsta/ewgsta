@@ -34,6 +34,10 @@ export const readMoreLabel = siteData.readMoreLabel || 'Read More';
 export const viewAllProjectsLabel = siteData.viewAllProjectsLabel || 'View All Projects';
 export const viewAllPostsLabel = siteData.viewAllPostsLabel || 'View All Posts';
 
+export const backToHomeLabel = siteData.backToHomeLabel || '← Back to Home';
+export const backToProjectsLabel = siteData.backToProjectsLabel || '← Back to Projects';
+export const backToPostsLabel = siteData.backToPostsLabel || '← Back to Posts';
+
 // Search Labels
 export const searchPlaceholder = siteData.searchPlaceholder || 'Search posts and projects...';
 export const searchNoResults = siteData.searchNoResults || 'No results found for "{query}"';

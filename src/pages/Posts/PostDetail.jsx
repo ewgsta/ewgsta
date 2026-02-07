@@ -7,8 +7,9 @@ import rehypeRaw from 'rehype-raw';
 import { posts } from '../../data/posts';
 import 'highlight.js/styles/atom-one-dark.css';
 import Comments from '../../components/Comments';
-import { postsSlug } from '../../data/siteData';
+import { postsSlug, backToPostsLabel } from '../../data/siteData';
 import SEO from '../../components/SEO';
+import Divider from '../../components/Divider';
 
 const PostDetail = () => {
     const { slug } = useParams();
@@ -37,7 +38,7 @@ const PostDetail = () => {
             />
             <article style={{ paddingBottom: '60px' }}>
                 <div style={{ marginBottom: '30px' }}>
-                    <Link to={`/${postsSlug}`} style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>← Back to Posts</Link>
+                    <Link to={`/${postsSlug}`} style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{backToPostsLabel}</Link>
                 </div>
 
                 <header style={{ marginBottom: '40px', borderBottom: '1px dashed #333', paddingBottom: '20px' }}>
@@ -92,6 +93,7 @@ const PostDetail = () => {
 
                 <Comments key={slug} />
             </article>
+            <Divider />
         </>
     );
 };

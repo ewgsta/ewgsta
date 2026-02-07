@@ -17,6 +17,9 @@ postsLabel: Paylaşımlarım
 readMoreLabel: Daha fazlasını görüntüle
 viewAllProjectsLabel: Projelerim
 viewAllPostsLabel: Paylaşımlarım
+backToHomeLabel: ← Ana Sayfaya Dön
+backToProjectsLabel: ← Projelere Dön
+backToPostsLabel: ← Paylaşımlara Dön
 postsSlug: paylasımlar
 projectsSlug: projeler
 searchPlaceholder: Post ve projelerde ara...

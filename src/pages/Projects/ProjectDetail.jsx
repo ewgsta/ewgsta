@@ -6,8 +6,9 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import 'highlight.js/styles/github-dark.css';
 import { getProjects } from '../../utils/content';
-import { projectsSlug } from '../../data/siteData';
+import { projectsSlug, backToProjectsLabel } from '../../data/siteData';
 import SEO from '../../components/SEO';
+import Divider from '../../components/Divider';
 
 const ProjectDetail = () => {
     const { slug } = useParams();
@@ -50,7 +51,7 @@ const ProjectDetail = () => {
             />
             <article className="post-detail-container">
                 <div style={{ marginBottom: '30px' }}>
-                    <Link to={`/${projectsSlug}`} style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>← Back to Projects</Link>
+                    <Link to={`/${projectsSlug}`} style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{backToProjectsLabel}</Link>
                 </div>
 
                 <h1 className="post-detail-title">{project.name}</h1>
@@ -87,6 +88,7 @@ const ProjectDetail = () => {
                     </ReactMarkdown>
                 </div>
             </article>
+            <Divider />
         </>
     );
 };
