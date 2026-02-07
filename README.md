@@ -1,5 +1,5 @@
 <h1>
-  Furkan 👋
+  Furkan
   <img src="https://count.getloli.com/@ewgsta" alt="ewgsta-counter" align="right" />
 </h1>
 <h2>Kendi halinde birisi.</h2>
