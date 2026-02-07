@@ -2,7 +2,8 @@ backend:
   name: github
   repo: ewgsta/ewgsta
   branch: main
-  site_domain: ewgsta.me
+  base_url: https://ewgsta.me
+  auth_endpoint: api/auth
   local_backend: true # Allows local git commits without complex OAuth setup
 
 media_folder: "public/images/uploads" # Media files will be stored in the repo under public/images/uploads
@@ -41,7 +42,7 @@ collections:
         file: "src/content/site/config.yaml"
         fields:
           - {label: "Site Title", name: "siteTitle", widget: "string", default: "Houtarou Oreki"}
-          - {label: "Logo URL", name: "logoUrl", widget: "string", default: "https://avatars.alphacoders.com/avatars/view/364812"}
+          - {label: "Logo URL", name: "logoUrl", widget: "string", default: "https://github.com/ewgsta.png"}
           - {label: "Logo Text", name: "logoText", widget: "string", default: "Houtarou Oreki"}
           - {label: "Footer Text", name: "footerText", widget: "string", default: "© 2026 Houtarou Oreki. All rights reserved."}
           - {label: "Hero Title", name: "heroTitle", widget: "string", default: "Houtarou Oreki"}
