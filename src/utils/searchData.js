@@ -54,10 +54,10 @@ export async function getAllSearchableContent() {
 
         // Clean slug for posts (remove date prefix if present, e.g. 2024-01-01-my-post -> my-post)
         let slug = filename;
-        if (type === 'post') {
-            // Remove YYYY-MM-DD- prefix if it exists
-            slug = slug.replace(/^\d{4}-\d{2}-\d{2}-/, '');
-        }
+        // if (type === 'post') {
+        //     // Remove YYYY-MM-DD- prefix if it exists
+        //     slug = slug.replace(/^\d{4}-\d{2}-\d{2}-/, '');
+        // }
 
         items.push({
             title: data.title || filename,
