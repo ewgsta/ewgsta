@@ -7,11 +7,13 @@ import Posts from './pages/Posts/index';
 import PostDetail from './pages/Posts/PostDetail';
 import Projects from './pages/Projects';
 import Meta from './components/Meta';
+import SearchModal from './components/SearchModal';
 
 function App() {
   return (
     <div className="container">
       <Meta />
+      <SearchModal />
       <Header />
 
       <main style={{ flex: 1, width: '100%' }}>
