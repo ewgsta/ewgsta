@@ -29,6 +29,7 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
+      - {label: "Featured Project", name: "featured", widget: "boolean", default: false, required: false}
       - {label: "Project URL", name: "link", widget: "string", required: false}
       - {label: "Tech Stack", name: "tech", widget: "list", field: {label: "Technology", name: "tech_item", widget: "string"}}
       - {label: "Body", name: "body", widget: "markdown"}
