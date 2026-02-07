@@ -9,10 +9,17 @@
 </head>
 
 <body>
-  <!-- Decap CMS mount point -->
   <div id="nc-root"></div>
 
-  <!-- Load Decap CMS after DOM is ready -->
+  <script>
+    //debug
+    window.addEventListener('message', function (e) {
+      console.log('Origin:', e.origin);
+      console.log('Data:', e.data);
+      console.log('Type:', typeof e.data);
+    });
+  </script>
+
   <script src="https://unpkg.com/decap-cms@3.1.2/dist/decap-cms.js"></script>
 </body>
 
