@@ -38,56 +38,46 @@ export default async function handler(req, res) {
             throw new Error('No access token received from GitHub');
         }
 
-        // Escape the token for safe embedding
-        const escapedToken = access_token.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"');
+        // Properly escape for JS string
+        const escapedToken = access_token.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
-        // Don't auto-close - let Decap CMS handle it
+        // Use the proper Netlify/Decap CMS OAuth handshake
         const content = `<!DOCTYPE html>
 <html>
 <head>
   <title>Authorizing...</title>
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; text-align: center; padding: 50px; background: #1a1a2e; color: #eee; }
-    .spinner { border: 3px solid #333; border-top: 3px solid #00d4ff; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 20px auto; }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
-  <div class="spinner"></div>
-  <p>Authorizing...</p>
-  <p id="status" style="font-size: 12px; color: #888;"></p>
+  <p>Completing authentication...</p>
   
   <script>
     (function() {
       var token = '${escapedToken}';
       var provider = 'github';
-      var statusEl = document.getElementById('status');
       
-      function sendMessage() {
-        var data = JSON.stringify({ token: token, provider: provider });
-        var message = 'authorization:' + provider + ':success:' + data;
+      // The Netlify/Decap CMS OAuth handshake:
+      // 1. Popup sends "authorizing:github" to opener
+      // 2. Opener responds with any message
+      // 3. Popup sends token in response
+      
+      function receiveMessage(e) {
+        console.log('Received message from opener:', e.data);
         
-        if (window.opener) {
-          window.opener.postMessage(message, '*');
-          statusEl.textContent = 'Message sent, waiting for CMS...';
-          return true;
-        } else {
-          statusEl.textContent = 'Error: No opener window found';
-          return false;
-        }
+        // When we receive ANY message from opener, send the token
+        window.opener.postMessage(
+          'authorization:' + provider + ':success:' + JSON.stringify({ token: token, provider: provider }),
+          e.origin
+        );
       }
       
-      // Send message immediately and periodically
-      sendMessage();
-      var interval = setInterval(function() {
-        sendMessage();
-      }, 500);
+      window.addEventListener('message', receiveMessage, false);
       
-      // Stop after 10 seconds and show manual close option
-      setTimeout(function() {
-        clearInterval(interval);
-        statusEl.innerHTML = 'If not redirected automatically, <a href="javascript:window.close()" style="color:#00d4ff">click here to close</a>';
-      }, 10000);
+      // Start the handshake - tell opener we're authorizing
+      console.log('Sending authorizing message...');
+      window.opener.postMessage('authorizing:' + provider, '*');
     })();
   </script>
 </body>
