@@ -2,7 +2,7 @@ backend:
   name: github
   repo: ewgsta/ewgsta
   branch: main
-  base_url: https://ewgsta.me
+  base_url: https://www.ewgsta.me
   auth_endpoint: api/auth
 
 media_folder: "public/images/uploads" # Media files will be stored in the repo under public/images/uploads
