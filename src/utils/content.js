@@ -23,13 +23,26 @@ export function parseFrontmatter(markdown) {
     return { data: {}, content: markdown };
 }
 
+function formatDate(date) {
+    if (!date) return 'April 22, 2012';
+    const d = date instanceof Date ? date : new Date(date);
+    if (isNaN(d.getTime())) return 'April 22, 2012';
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function toTimestamp(date) {
+    if (!date) return 0;
+    const d = date instanceof Date ? date : new Date(date);
+    return isNaN(d.getTime()) ? 0 : d.getTime();
+}
+
 export async function getProjects() {
     const modules = import.meta.glob('../content/projects/*.md', { query: '?raw', import: 'default' });
     const projects = [];
 
     for (const path in modules) {
         const rawContent = await modules[path]();
-        const { data } = parseFrontmatter(rawContent);
+        const { data, content } = parseFrontmatter(rawContent);
         const filename = path.split('/').pop().replace('.md', '');
 
         projects.push({
@@ -37,9 +50,10 @@ export async function getProjects() {
             desc: data.description || '',
             link: data.link || '#',
             isPinned: data.featured === true,
-            tech: data.tech || [],
+            tech: Array.isArray(data.tech) ? data.tech : [],
             slug: filename,
-            ...data
+            body: content,
+            content: content
         });
     }
 
@@ -53,39 +67,31 @@ export async function getPosts() {
     for (const path in modules) {
         try {
             const rawContent = await modules[path]();
-            const { data = {} } = parseFrontmatter(rawContent);
+            const { data = {}, content } = parseFrontmatter(rawContent);
             const filename = path.split('/').pop().replace('.md', '');
 
-            let dateObj;
-            if (data.date) {
-                dateObj = new Date(data.date);
-            } else {
+            let dateValue = data.date;
+            if (!dateValue) {
                 const dateMatch = filename.match(/^(\d{4})-(\d{2})-(\d{2})/);
                 if (dateMatch) {
-                    dateObj = new Date(`${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}`);
-                } else {
-                    dateObj = new Date();
+                    dateValue = `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}`;
                 }
-            }
-
-            if (isNaN(dateObj.getTime())) {
-                dateObj = new Date();
             }
 
             posts.push({
                 title: data.title || filename,
-                date: dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
-                rawDate: dateObj,
+                date: formatDate(dateValue),
+                timestamp: toTimestamp(dateValue),
                 slug: filename,
-                thumbnail: data.thumbnail,
+                thumbnail: data.thumbnail || null,
                 layout: data.layout || 'blog',
                 description: data.description || '',
-                ...data
+                content: content
             });
         } catch (e) {
             // Post işleme hatası - sessizce atla
         }
     }
 
-    return posts.sort((a, b) => b.rawDate - a.rawDate);
+    return posts.sort((a, b) => b.timestamp - a.timestamp);
 }
