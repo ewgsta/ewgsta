@@ -1,5 +1,14 @@
 import yaml from 'js-yaml';
 
+export function parseYaml(yamlString) {
+    try {
+        return yaml.load(yamlString) || {};
+    } catch (e) {
+        console.error('Error parsing YAML:', e);
+        return {};
+    }
+}
+
 export function parseFrontmatter(markdown) {
     const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
     const match = frontmatterRegex.exec(markdown);

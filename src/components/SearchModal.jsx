@@ -3,17 +3,17 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 import Fuse from 'fuse.js';
 import { useNavigate } from 'react-router-dom';
 import { getAllSearchableContent } from '../utils/searchData';
-import { useTheme } from '../context/ThemeContext';
+import { useSearch } from '../context/SearchContext';
+import { searchPlaceholder, searchNoResults, searchEmptyState, postsLabel, projectsLabel } from '../data/siteData';
 
 export default function SearchModal() {
-    const [isOpen, setIsOpen] = useState(false);
+    const { isSearchOpen, closeSearch, toggleSearch } = useSearch();
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
     const [data, setData] = useState([]);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const inputRef = useRef(null);
     const navigate = useNavigate();
-    const { theme } = useTheme();
 
     // Load data once
     useEffect(() => {
@@ -48,13 +48,13 @@ export default function SearchModal() {
             // Toggle with Ctrl+K or Cmd+K
             if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                 e.preventDefault();
-                setIsOpen(prev => !prev);
+                toggleSearch();
             }
 
-            if (!isOpen) return;
+            if (!isSearchOpen) return;
 
             if (e.key === 'Escape') {
-                setIsOpen(false);
+                closeSearch();
             } else if (e.key === 'ArrowDown') {
                 e.preventDefault();
                 setSelectedIndex(prev => (prev + 1) % results.length);
@@ -71,11 +71,11 @@ export default function SearchModal() {
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [isOpen, results, selectedIndex]);
+    }, [isSearchOpen, results, selectedIndex, toggleSearch, closeSearch]);
 
     // Focus input on open
     useEffect(() => {
-        if (isOpen) {
+        if (isSearchOpen) {
             setTimeout(() => inputRef.current?.focus(), 50);
             setQuery('');
             setResults([]);
@@ -83,10 +83,10 @@ export default function SearchModal() {
         } else {
             document.body.style.overflow = '';
         }
-    }, [isOpen]);
+    }, [isSearchOpen]);
 
     const handleSelect = (item) => {
-        setIsOpen(false);
+        closeSearch();
         if (item.type === 'post') {
             navigate(`/posts/${item.slug}`);
         } else if (item.type === 'project') {
@@ -94,17 +94,17 @@ export default function SearchModal() {
         }
     };
 
-    if (!isOpen) return null;
+    if (!isSearchOpen) return null;
 
     return (
-        <div className="search-modal-overlay" onClick={() => setIsOpen(false)}>
+        <div className="search-modal-overlay" onClick={closeSearch}>
             <div className="search-modal-content" onClick={e => e.stopPropagation()}>
                 <div className="search-input-wrapper">
                     <i className="fa-solid fa-magnifying-glass search-icon"></i>
                     <input
                         ref={inputRef}
                         type="text"
-                        placeholder="Search posts and projects..."
+                        placeholder={searchPlaceholder}
                         value={query}
                         onChange={e => setQuery(e.target.value)}
                         className="search-input"
@@ -127,7 +127,7 @@ export default function SearchModal() {
                                 <div className="result-info">
                                     <div className="result-title">
                                         {item.title}
-                                        <span className="result-type-badge">{item.type}</span>
+                                        <span className="result-type-badge">{item.type === 'post' ? postsLabel : projectsLabel}</span>
                                     </div>
                                     {item.description && <div className="result-desc">{item.description}</div>}
                                 </div>
@@ -137,13 +137,13 @@ export default function SearchModal() {
                     </ul>
                 ) : query && (
                     <div className="search-no-results">
-                        No results found for "{query}"
+                        {searchNoResults.replace('{query}', query)}
                     </div>
                 )}
 
                 {!query && (
                     <div className="search-empty-state">
-                        <p>Type to start searching...</p>
+                        <p>{searchEmptyState}</p>
                     </div>
                 )}
             </div>

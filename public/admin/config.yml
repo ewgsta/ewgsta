@@ -54,6 +54,10 @@ collections:
           - {label: "Read More Label", name: "readMoreLabel", widget: "string", default: "Read More"}
           - {label: "View All Projects Label", name: "viewAllProjectsLabel", widget: "string", default: "View All Projects"}
           - {label: "View All Posts Label", name: "viewAllPostsLabel", widget: "string", default: "View All Posts"}
+          
+          - {label: "Search Placeholder", name: "searchPlaceholder", widget: "string", default: "Search posts and projects..."}
+          - {label: "Search No Results Text", name: "searchNoResults", widget: "string", default: "No results found for \"{query}\""}
+          - {label: "Search Empty State Text", name: "searchEmptyState", widget: "string", default: "Type to start searching..."}
 
           - label: "Social Links"
             name: "links"

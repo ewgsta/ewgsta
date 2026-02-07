@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext.jsx';
+import { useSearch } from '../context/SearchContext.jsx';
 import { logoUrl, logoText } from '../data/siteData';
 
 const Header = () => {
     const { theme, toggleTheme } = useTheme();
+    const { openSearch } = useSearch();
 
     return (
         <header>
@@ -19,7 +21,7 @@ const Header = () => {
             </div>
 
             <div className="header-icons">
-                <i className="fa-solid fa-magnifying-glass"></i>
+                <i className="fa-solid fa-magnifying-glass" onClick={openSearch} style={{ cursor: 'pointer' }}></i>
                 <i
                     className={`fa-solid ${theme === 'dark' ? 'fa-moon' : 'fa-sun'}`}
                     onClick={toggleTheme}

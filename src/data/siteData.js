@@ -25,4 +25,8 @@ export const readMoreLabel = siteData.readMoreLabel || 'Read More';
 export const viewAllProjectsLabel = siteData.viewAllProjectsLabel || 'View All Projects';
 export const viewAllPostsLabel = siteData.viewAllPostsLabel || 'View All Posts';
 
+export const searchPlaceholder = siteData.searchPlaceholder || 'Search posts and projects...';
+export const searchNoResults = siteData.searchNoResults || 'No results found for "{query}"';
+export const searchEmptyState = siteData.searchEmptyState || 'Type to start searching...';
+
 export const socialLinks = siteData.links || [];
