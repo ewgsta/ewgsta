@@ -38,52 +38,56 @@ export default async function handler(req, res) {
             throw new Error('No access token received from GitHub');
         }
 
-        // Escape the token for safe embedding in JS string
-        const escapedToken = access_token.replace(/'/g, "\\'").replace(/"/g, '\\"');
+        // Escape the token for safe embedding
+        const escapedToken = access_token.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"');
 
+        // Don't auto-close - let Decap CMS handle it
         const content = `<!DOCTYPE html>
 <html>
 <head>
-  <title>Success!</title>
+  <title>Authorizing...</title>
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 50px; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; text-align: center; padding: 50px; background: #1a1a2e; color: #eee; }
+    .spinner { border: 3px solid #333; border-top: 3px solid #00d4ff; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 20px auto; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
-  <p>Success! Closing...</p>
+  <div class="spinner"></div>
+  <p>Authorizing...</p>
+  <p id="status" style="font-size: 12px; color: #888;"></p>
+  
   <script>
     (function() {
-      var provider = 'github';
       var token = '${escapedToken}';
+      var provider = 'github';
+      var statusEl = document.getElementById('status');
       
       function sendMessage() {
-        // Decap CMS expects this exact format
         var data = JSON.stringify({ token: token, provider: provider });
         var message = 'authorization:' + provider + ':success:' + data;
         
-        console.log('Sending message:', message);
-        
         if (window.opener) {
-          // Send to any origin since we don't know the exact origin
           window.opener.postMessage(message, '*');
-          console.log('Message sent to opener');
+          statusEl.textContent = 'Message sent, waiting for CMS...';
+          return true;
         } else {
-          console.log('No window.opener found');
+          statusEl.textContent = 'Error: No opener window found';
+          return false;
         }
       }
       
-      // Send immediately
+      // Send message immediately and periodically
       sendMessage();
+      var interval = setInterval(function() {
+        sendMessage();
+      }, 500);
       
-      // Also send after a short delay in case opener isn't ready
-      setTimeout(sendMessage, 100);
-      setTimeout(sendMessage, 500);
-      setTimeout(sendMessage, 1000);
-      
-      // Close after giving time for messages
+      // Stop after 10 seconds and show manual close option
       setTimeout(function() {
-        window.close();
-      }, 2000);
+        clearInterval(interval);
+        statusEl.innerHTML = 'If not redirected automatically, <a href="javascript:window.close()" style="color:#00d4ff">click here to close</a>';
+      }, 10000);
     })();
   </script>
 </body>
@@ -97,10 +101,10 @@ export default async function handler(req, res) {
         const errorContent = `<!DOCTYPE html>
 <html>
 <head><title>Authentication Error</title></head>
-<body style="font-family: sans-serif; text-align: center; padding: 50px;">
-  <h1>Authentication Failed</h1>
-  <p style="color: red;">${err.message}</p>
-  <p><button onclick="window.close()">Close</button></p>
+<body style="font-family: sans-serif; text-align: center; padding: 50px; background: #1a1a2e; color: #eee;">
+  <h1 style="color: #ff6b6b;">Authentication Failed</h1>
+  <p>${err.message}</p>
+  <p><button onclick="window.close()" style="padding: 10px 20px; cursor: pointer;">Close</button></p>
 </body>
 </html>`;
         res.setHeader('Content-Type', 'text/html');
