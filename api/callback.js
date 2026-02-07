@@ -38,32 +38,52 @@ export default async function handler(req, res) {
             throw new Error('No access token received from GitHub');
         }
 
-        // Send token back to opener immediately
+        // Escape the token for safe embedding in JS string
+        const escapedToken = access_token.replace(/'/g, "\\'").replace(/"/g, '\\"');
+
         const content = `<!DOCTYPE html>
 <html>
 <head>
-  <title>Authenticating...</title>
+  <title>Success!</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 50px; }
+  </style>
 </head>
 <body>
-  <p>Authenticating with GitHub...</p>
+  <p>Success! Closing...</p>
   <script>
     (function() {
-      var token = "${access_token}";
-      var provider = "github";
+      var provider = 'github';
+      var token = '${escapedToken}';
       
-      // Message format for Decap CMS
-      var message = "authorization:" + provider + ":success:" + JSON.stringify({
-        token: token,
-        provider: provider
-      });
-      
-      // Send to opener
-      if (window.opener) {
-        window.opener.postMessage(message, "*");
-        setTimeout(function() { window.close(); }, 1000);
-      } else {
-        document.body.innerHTML = "<p>Authentication successful! You can close this window.</p>";
+      function sendMessage() {
+        // Decap CMS expects this exact format
+        var data = JSON.stringify({ token: token, provider: provider });
+        var message = 'authorization:' + provider + ':success:' + data;
+        
+        console.log('Sending message:', message);
+        
+        if (window.opener) {
+          // Send to any origin since we don't know the exact origin
+          window.opener.postMessage(message, '*');
+          console.log('Message sent to opener');
+        } else {
+          console.log('No window.opener found');
+        }
       }
+      
+      // Send immediately
+      sendMessage();
+      
+      // Also send after a short delay in case opener isn't ready
+      setTimeout(sendMessage, 100);
+      setTimeout(sendMessage, 500);
+      setTimeout(sendMessage, 1000);
+      
+      // Close after giving time for messages
+      setTimeout(function() {
+        window.close();
+      }, 2000);
     })();
   </script>
 </body>
@@ -77,10 +97,10 @@ export default async function handler(req, res) {
         const errorContent = `<!DOCTYPE html>
 <html>
 <head><title>Authentication Error</title></head>
-<body>
+<body style="font-family: sans-serif; text-align: center; padding: 50px;">
   <h1>Authentication Failed</h1>
-  <p>${err.message}</p>
-  <p><a href="javascript:window.close()">Close this window</a></p>
+  <p style="color: red;">${err.message}</p>
+  <p><button onclick="window.close()">Close</button></p>
 </body>
 </html>`;
         res.setHeader('Content-Type', 'text/html');
