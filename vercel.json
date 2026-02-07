@@ -1,15 +1,7 @@
 {
     "rewrites": [
         {
-            "source": "/admin",
-            "destination": "/admin/index.html"
-        },
-        {
-            "source": "/admin/",
-            "destination": "/admin/index.html"
-        },
-        {
-            "source": "/((?!admin|api|assets|images).*)",
+            "source": "/((?!admin|api|assets|images|vite\\.svg).*)",
             "destination": "/index.html"
         }
     ],
