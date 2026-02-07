@@ -1,0 +1,28 @@
+
+import { parseYaml } from '../utils/content';
+
+const configFile = import.meta.glob('../content/site/config.yaml', { eager: true, query: '?raw', import: 'default' });
+
+let siteData = {};
+
+const key = '../content/site/config.yaml';
+if (configFile[key]) {
+    siteData = parseYaml(configFile[key]);
+}
+
+export const siteTitle = siteData.siteTitle || 'Houtarou Oreki';
+export const logoUrl = siteData.logoUrl || 'https://github.com/ewgsta.png';
+export const logoText = siteData.logoText || 'Houtarou Oreki';
+export const footerText = siteData.footerText || '© 2026 Houtarou Oreki. All rights reserved.';
+
+export const heroTitle = siteData.heroTitle || 'Houtarou Oreki';
+export const quoteText = siteData.quoteText || 'What is meant to be will be, what is not meant to be should not be forced.';
+
+export const findMeOnLabel = siteData.findMeOnLabel || 'Find me on';
+export const projectsLabel = siteData.projectsLabel || 'Projects';
+export const postsLabel = siteData.postsLabel || 'Posts';
+export const readMoreLabel = siteData.readMoreLabel || 'Read More';
+export const viewAllProjectsLabel = siteData.viewAllProjectsLabel || 'View All Projects';
+export const viewAllPostsLabel = siteData.viewAllPostsLabel || 'View All Posts';
+
+export const socialLinks = siteData.links || [];

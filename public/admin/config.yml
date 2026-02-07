@@ -1,0 +1,62 @@
+backend:
+  name: github
+  repo: ewgsta/ewgsta
+  branch: main
+  site_domain: ewgsta.me
+  local_backend: true # Allows local git commits without complex OAuth setup
+
+media_folder: "public/images/uploads" # Media files will be stored in the repo under public/images/uploads
+public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
+
+collections:
+  - name: "posts" # Used in routes, e.g., /admin/collections/blog
+    label: "Posts" # Used in the UI
+    folder: "src/content/posts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Project URL", name: "link", widget: "string", required: false}
+      - {label: "Tech Stack", name: "tech", widget: "list", field: {label: "Technology", name: "tech_item", widget: "string"}}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "pages"
+    label: "Site Config"
+    files:
+      - name: "config"
+        label: "Global Configuration"
+        file: "src/content/site/config.yaml"
+        fields:
+          - {label: "Site Title", name: "siteTitle", widget: "string", default: "Houtarou Oreki"}
+          - {label: "Logo URL", name: "logoUrl", widget: "string", default: "https://avatars.alphacoders.com/avatars/view/364812"}
+          - {label: "Logo Text", name: "logoText", widget: "string", default: "Houtarou Oreki"}
+          - {label: "Footer Text", name: "footerText", widget: "string", default: "© 2026 Houtarou Oreki. All rights reserved."}
+          - {label: "Hero Title", name: "heroTitle", widget: "string", default: "Houtarou Oreki"}
+          - {label: "Quote Text", name: "quoteText", widget: "string", default: "What is meant to be will be..."}
+          
+          - {label: "Find Me On Label", name: "findMeOnLabel", widget: "string", default: "Find me on"}
+          - {label: "Projects Label", name: "projectsLabel", widget: "string", default: "Projects"}
+          - {label: "Posts Label", name: "postsLabel", widget: "string", default: "Posts"}
+          - {label: "Read More Label", name: "readMoreLabel", widget: "string", default: "Read More"}
+          - {label: "View All Projects Label", name: "viewAllProjectsLabel", widget: "string", default: "View All Projects"}
+          - {label: "View All Posts Label", name: "viewAllPostsLabel", widget: "string", default: "View All Posts"}
+
+          - label: "Social Links"
+            name: "links"
+            widget: "list"
+            fields:
+              - {label: "Platform", name: "platform", widget: "select", options: ["fa-brands fa-github", "fa-brands fa-x-twitter", "fa-brands fa-instagram", "fa-brands fa-linkedin", "fa-brands fa-discord", "fa-brands fa-youtube", "fa-brands fa-twitch", "fa-brands fa-tiktok", "fa-brands fa-facebook", "fa-brands fa-reddit", "fa-brands fa-pinterest", "fa-brands fa-weibo", "fa-brands fa-zhihu", "fa-brands fa-product-hunt", "fa-brands fa-steam", "fa-brands fa-spotify", "fa-solid fa-envelope", "fa-solid fa-rss", "fa-solid fa-globe"]} 
+              - {label: "URL", name: "url", widget: "string"}

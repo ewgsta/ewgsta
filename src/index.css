@@ -1,0 +1,306 @@
+:root {
+  /* Görselden alınan daha hassas renkler (Dark Theme - Default) */
+  --bg-color: #121212;
+  --text-main: #cecece;
+  --text-muted: #757575;
+  --accent-pink: #d16d79;
+  --border-dashed: 1px dashed #333;
+  --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+[data-theme='light'] {
+  --bg-color: #fafafa;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --accent-pink: #d16d79;
+  /* Light modda da aynı kalabilir veya koyulaştırılabilir #b05560 */
+  --border-dashed: 1px dashed #ccc;
+}
+
+html {
+  /* İki kere CTRL+ yapmanıza denk gelmesi için boyutu büyüttüm */
+  font-size: 19px;
+  -webkit-font-smoothing: antialiased;
+  /* Fontları daha pürüzsüz yapar */
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
+  /* Scrollbar her zaman gözüksün, sayfa geçişlerinde oynama yapmasın */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-stack);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* Ana Taşıyıcıyı Genişlettik */
+/* Ana Taşıyıcıyı Genişlettik */
+.container {
+  width: 100%;
+  max-width: 860px;
+  /* Daha geniş alan */
+  padding: 60px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #fff;
+}
+
+/* HEADER ALANI */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 70px;
+  /* Boşluk artırıldı */
+}
+
+.brand-group {
+  display: flex;
+  gap: 15px;
+}
+
+.logo-img {
+  /* Görseldeki beyaz çiçeği simüle eden ikon alanı */
+  font-size: 2rem;
+  color: #e0e0e0;
+  line-height: 1;
+  padding-top: 5px;
+}
+
+.logo-img img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.brand-info h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #e6e6e6;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.brand-links {
+  font-size: 0.9rem;
+  color: var(--accent-pink);
+  font-weight: 500;
+}
+
+.brand-links a {
+  color: var(--accent-pink);
+}
+
+.brand-links span {
+  margin: 0 8px;
+  opacity: 0.6;
+}
+
+.header-icons {
+  display: flex;
+  gap: 20px;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  padding-top: 5px;
+}
+
+.header-icons i {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.header-icons i:hover {
+  transform: scale(1.1);
+  color: #fff;
+}
+
+/* ORTAK BAŞLIK STİLİ */
+h2.section-header {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+[data-theme='light'] h2.section-header {
+  color: var(--text-main);
+}
+
+/* LİSTE YAPISI (Grid ile tam hizalama) */
+.post-list {
+  list-style: none;
+  margin-bottom: 40px;
+}
+
+.post-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  /* Tarih alanı sabit, başlık esnek */
+  margin-bottom: 14px;
+  align-items: baseline;
+}
+
+.post-date {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-family: var(--font-mono);
+  /* Tarihler için monospace */
+}
+
+.post-detail-title {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.post-title {
+  color: var(--text-main);
+  text-decoration: underline;
+  text-decoration-color: #444;
+  /* Çok silik alt çizgi */
+  text-underline-offset: 4px;
+  font-weight: 400;
+}
+
+.post-title:hover {
+  text-decoration-color: var(--text-main);
+}
+
+.read-more-link {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: #444;
+}
+
+/* AYIRAÇ */
+hr.divider {
+  border: 0;
+  border-top: var(--border-dashed);
+  margin: 50px 0;
+  opacity: 0.6;
+}
+
+/* PROJELER LİSTESİ */
+.project-list {
+  list-style: none;
+}
+
+.project-item {
+  margin-bottom: 16px;
+}
+
+.project-name {
+  text-decoration: underline;
+  text-decoration-color: #555;
+  text-underline-offset: 4px;
+  margin-right: 6px;
+  color: var(--text-main);
+}
+
+.project-desc {
+  color: #999;
+}
+
+/* FOOTER ALANI */
+.quote-text {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-style: italic;
+  margin-bottom: 25px;
+}
+
+.social-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 60px;
+  font-size: 1.1rem;
+}
+
+.find-me-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-right: 5px;
+}
+
+.social-row a {
+  color: #aaa;
+}
+
+.social-row a:hover {
+  color: #fff;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding-bottom: 40px;
+}
+
+.footer-links a {
+  margin-left: 15px;
+  color: var(--text-muted);
+}
+
+/* Light Theme Specific Overrides for Elements with Hardcoded Colors */
+[data-theme='light'] .post-detail-title {
+  color: var(--text-main);
+}
+
+[data-theme='light'] .brand-info h1 {
+  color: var(--text-main);
+}
+
+[data-theme='light'] a:hover,
+[data-theme='light'] .social-row a:hover,
+[data-theme='light'] .header-icons i:hover {
+  color: var(--accent-pink);
+  /* Hover'da beyaz yerine pembe/accent olsun light modda görünürlük için */
+}
+
+[data-theme='light'] .logo-img {
+  color: var(--text-main);
+}
+
+/* MARKDOWN STYLE OVERRIDES */
+.markdown-content ul,
+.markdown-content ol {
+  margin-bottom: 20px;
+  padding-left: 25px;
+  /* Standart girinti */
+  list-style-position: outside;
+  /* Noktaları metnin dışında tut, ama container içinde */
+}
+
+.markdown-content li {
+  margin-bottom: 6px;
+}
