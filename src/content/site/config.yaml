@@ -1,5 +1,5 @@
 siteTitle: Furkan (ewgsta)
-siteDescription: Kendi halinde Full Stack geliştirici. Projeler, bloglar ve daha fazlası.
+siteDescription: Kendi halinde Full Stack geliştirici.
 siteUrl: https://www.ewgsta.me
 siteLanguage: tr
 siteAuthor: Furkan
@@ -7,7 +7,8 @@ siteKeywords: full stack, developer, geliştirici, yazılım, blog, portfolio
 ogImage: https://github.com/ewgsta.png
 logoUrl: https://github.com/ewgsta.png
 logoText: " "
-footerText: Her ne kadar normal bir hayatı özlesem de, kalbimdeki boşluğun hiçbir zaman dolmayacağını biliyorum.
+footerText: Her ne kadar normal bir hayatı özlesem de, kalbimdeki boşluğun
+  hiçbir zaman dolmayacağını biliyorum.
 heroTitle: Furkan :3
 quoteText: Kendi halinde Full Stack geliştirici.
 findMeOnLabel: Bana ulaş
@@ -16,8 +17,8 @@ postsLabel: Paylaşımlarım
 readMoreLabel: Daha fazlasını görüntüle
 viewAllProjectsLabel: Projelerim
 viewAllPostsLabel: Paylaşımlarım
-postsSlug: posts
-projectsSlug: projects
+postsSlug: paylasımlar
+projectsSlug: projeler
 searchPlaceholder: Post ve projelerde ara...
 searchNoResults: '"{query}" için sonuç bulunamadı'
 searchEmptyState: Aramaya başlamak için yazın...
