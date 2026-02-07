@@ -2,7 +2,7 @@
   --bg-color: #121212;
   --text-main: #cecece;
   --text-muted: #757575;
-  --accent-pink: #d16d79;
+  --accent-pink: #5F6F81;
   --border-dashed: 1px dashed #333;
   --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -12,7 +12,7 @@
   --bg-color: #fafafa;
   --text-main: #333333;
   --text-muted: #666666;
-  --accent-pink: #d16d79;
+  --accent-pink: #5F6F81;
   --border-dashed: 1px dashed #ccc;
 }
 
