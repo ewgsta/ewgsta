@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Posts from './pages/Posts/index';
 import PostDetail from './pages/Posts/PostDetail';
 import Projects from './pages/Projects';
+import ProjectDetail from './pages/Projects/ProjectDetail';
 import Meta from './components/Meta';
 import SearchModal from './components/SearchModal';
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/posts" element={<Posts />} />
           <Route path="/posts/:slug" element={<PostDetail />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
         </Routes>
       </main>
 

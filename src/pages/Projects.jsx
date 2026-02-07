@@ -32,6 +32,8 @@ const Projects = () => {
                         name={project.name}
                         desc={project.desc}
                         link={project.link}
+                        slug={project.slug}
+                        showReadMore={true}
                     />
                 ))}
             </ul>
