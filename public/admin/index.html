@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oreki CMS</title>
+  <title>Decap CMS</title>
   <!-- Include the script that builds the page and powers Netlify CMS -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/decap-cms@3.1.2/dist/decap-cms.js"></script>
   <style>
     /* Tweaks for dark mode if desired, but Decap has its own theming */
   </style>
@@ -14,6 +14,13 @@
 
 <body>
   <!-- Decap CMS will render here -->
+  <script>
+    // Log errors to help debugging
+    window.onerror = function (msg, url, lineNo, columnNo, error) {
+      document.body.innerHTML += '<div style="color:red; padding:20px;">Error: ' + msg + '</div>';
+      return false;
+    };
+  </script>
 </body>
 
 </html>

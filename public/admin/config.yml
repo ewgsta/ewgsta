@@ -4,7 +4,6 @@ backend:
   branch: main
   base_url: https://ewgsta.me
   auth_endpoint: api/auth
-  local_backend: true # Allows local git commits without complex OAuth setup
 
 media_folder: "public/images/uploads" # Media files will be stored in the repo under public/images/uploads
 public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
