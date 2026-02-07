@@ -1,5 +1,16 @@
 import yaml from 'js-yaml';
 
+// Config'den dil ayarını al
+const configFile = import.meta.glob('../content/site/config.yaml', { eager: true, query: '?raw', import: 'default' });
+let siteLanguage = 'tr';
+const configKey = '../content/site/config.yaml';
+if (configFile[configKey]) {
+    try {
+        const config = yaml.load(configFile[configKey]);
+        siteLanguage = config.siteLanguage || 'tr';
+    } catch (e) { }
+}
+
 export function parseYaml(yamlString) {
     try {
         return yaml.load(yamlString) || {};
@@ -24,10 +35,14 @@ export function parseFrontmatter(markdown) {
 }
 
 function formatDate(date) {
-    if (!date) return 'April 22, 2012';
+    const locale = siteLanguage === 'tr' ? 'tr-TR' : 'en-US';
+    const defaultDate = siteLanguage === 'tr' ? '22 Nisan 2012' : 'April 22, 2012';
+
+    if (!date) return defaultDate;
     const d = date instanceof Date ? date : new Date(date);
-    if (isNaN(d.getTime())) return 'April 22, 2012';
-    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    if (isNaN(d.getTime())) return defaultDate;
+
+    return d.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 function toTimestamp(date) {

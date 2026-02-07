@@ -1,12 +1,17 @@
 import { parseFrontmatter } from '../utils/content';
+import { siteLanguage } from '../data/siteData';
 
 const postFiles = import.meta.glob('../content/posts/*.md', { eager: true, query: '?raw', import: 'default' });
 
 function formatDate(date) {
-    if (!date) return 'April 22, 2012';
+    const locale = siteLanguage === 'tr' ? 'tr-TR' : 'en-US';
+    const defaultDate = siteLanguage === 'tr' ? '22 Nisan 2012' : 'April 22, 2012';
+
+    if (!date) return defaultDate;
     const d = date instanceof Date ? date : new Date(date);
-    if (isNaN(d.getTime())) return 'April 22, 2012';
-    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    if (isNaN(d.getTime())) return defaultDate;
+
+    return d.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 function toTimestamp(date) {
