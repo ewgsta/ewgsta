@@ -2,6 +2,7 @@
 title: Weeb CLI
 description: Terminalinizden reklamsız, dikkat dağıtıcı unsur olmadan kolay ve
   hızlı şekilde anime izlemenizi sağlayan Python aracı.
+featured: true
 link: https://github.com/ewgsta/weeb-cli
 tech:
   - Python
