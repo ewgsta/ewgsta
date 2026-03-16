@@ -1,7 +1,7 @@
 ---
 title: Weeb API
 description: Weeb CLI projem için, Anime API.
-featured: false
+featured: true
 link: https://github.com/ewgsta/weeb-api
 tech:
   - Hono
