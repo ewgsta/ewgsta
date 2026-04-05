@@ -1,5 +1,5 @@
 ---
-title: Weeb API
+title: Anime API
 description: Weeb CLI projem için, Anime API.
 featured: true
 link: https://github.com/ewgsta/weeb-api
