@@ -31,7 +31,7 @@
 #### Github Insights
 <p align="left">
   <a href="https://github.com/ewgsta">
-    <img src="https://github-readme-stats-ochre-psi.vercel.app/api?username=ewgsta&show_icons=true&count_private=true&theme=react&hide_border=true&bg_color=0D1117&cache_seconds=3600" height="150" />
+    <img src="https://github-readme-stats-eight-theta.vercel.app/api?username=ewgsta&show_icons=true&count_private=true&include_all_commits=true&theme=react&hide_border=true&bg_color=0D1117" />
   </a>
   <a href="https://github.com/ewgsta">
     <img src="https://github-readme-stats-ochre-psi.vercel.app/api/top-langs/?username=ewgsta&langs_count=8&count_private=true&layout=compact&theme=react&hide_border=true&bg_color=0D1117&cache_seconds=3600" height="150" />
