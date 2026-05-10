@@ -44,10 +44,8 @@
 [![](https://img.shields.io/badge/Email-hello@ewgsta.me-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hello@ewgsta.me)
 [![](https://img.shields.io/badge/Discord-ewgsta-36393f?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/752050889958883380)
 
-<!-- 
 #### Highlights
 
 |Projects|Stars|Forks|
 |:---|:---|:---|
-|[Project Name](URL): Description here. | ![Stars](https://img.shields.io/github/stars/user/repo?style=flat-square&labelColor=343b41) | ![Forks](https://img.shields.io/github/forks/user/repo?style=flat-square&labelColor=343b41) | 
--->
+|[Weeb CLI](https://github.com/ewgsta/weeb-cli): No browser, no ads, no distractions. Just you and an unparalleled anime viewing experience. | ![Stars](https://img.shields.io/github/stars/ewgsta/weeb-cli?style=flat-square&labelColor=343b41) | ![Forks](https://img.shields.io/github/forks/ewgsta/weeb-cli?style=flat-square&labelColor=343b41) | 
