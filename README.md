@@ -38,12 +38,6 @@
   </a>
 </p>
 
-#### Contact & Links
-[![](https://img.shields.io/badge/Website-ewgsta.me-black?style=for-the-badge&logo=google-chrome&logoColor=white)](https://ewgsta.me)
-[![](https://img.shields.io/badge/Bluesky-ewgsta.bsky.social-0285FF?style=for-the-badge&logo=bluesky&logoColor=white)](https://bsky.app/profile/ewgsta.me)
-[![](https://img.shields.io/badge/Email-hello@ewgsta.me-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hello@ewgsta.me)
-[![](https://img.shields.io/badge/Discord-ewgsta-36393f?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/752050889958883380)
-
 #### Highlights
 
 |Projects|Stars|Forks|
@@ -56,3 +50,9 @@
 |[tsukuyomi](https://github.com/ewgsta/tsukuyomi): A modern music player that supports web, desktop, and mobile platforms and can be hosted on your own server. | ![Stars](https://img.shields.io/github/stars/ewgsta/tsukuyomi?style=flat-square&labelColor=343b41) | ![Forks](https://img.shields.io/github/forks/ewgsta/tsukuyomi?style=flat-square&labelColor=343b41) |
 |[anime-api](https://github.com/ewgsta/anime-api): Anime API for Weeb CLI. | ![Stars](https://img.shields.io/github/stars/ewgsta/anime-api?style=flat-square&labelColor=343b41) | ![Forks](https://img.shields.io/github/forks/ewgsta/anime-api?style=flat-square&labelColor=343b41) |
 |[MyDiary](https://github.com/ewgsta/MyDiary): The diary app in the movie Your Name (Japanese: 君の名は。 Kimi no Na wa). | ![Stars](https://img.shields.io/github/stars/ewgsta/MyDiary?style=flat-square&labelColor=343b41) | ![Forks](https://img.shields.io/github/forks/ewgsta/MyDiary?style=flat-square&labelColor=343b41) |
+
+#### Contact & Links
+[![](https://img.shields.io/badge/Website-ewgsta.me-black?style=for-the-badge&logo=google-chrome&logoColor=white)](https://ewgsta.me)
+[![](https://img.shields.io/badge/Bluesky-ewgsta.bsky.social-0285FF?style=for-the-badge&logo=bluesky&logoColor=white)](https://bsky.app/profile/ewgsta.me)
+[![](https://img.shields.io/badge/Email-hello@ewgsta.me-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hello@ewgsta.me)
+[![](https://img.shields.io/badge/Discord-ewgsta-36393f?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/752050889958883380)
