@@ -55,4 +55,3 @@
 [![](https://img.shields.io/badge/Website-ewgsta.me-black?style=for-the-badge&logo=google-chrome&logoColor=white)](https://ewgsta.me)
 [![](https://img.shields.io/badge/Bluesky-ewgsta.bsky.social-0285FF?style=for-the-badge&logo=bluesky&logoColor=white)](https://bsky.app/profile/ewgsta.me)
 [![](https://img.shields.io/badge/Email-hello@ewgsta.me-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hello@ewgsta.me)
-[![](https://img.shields.io/badge/Discord-ewgsta-36393f?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/752050889958883380)
