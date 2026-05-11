@@ -1,24 +1,24 @@
 ---
 title: Anime API
-description: Weeb CLI projem için, Anime API.
+description: Anime API for my Weeb CLI project.
 featured: true
 link: https://github.com/ewgsta/weeb-api
 tech:
   - Hono
 ---
 # Weeb API
-Weeb CLI için geliştirilen anime API dokümantasyonu.
+Anime API documentation developed for Weeb CLI.
 
-## API Dokümantasyonu
+## API Documentation
 
-### Anime Listesi (GET /animes)
-Tüm animeleri sayfalı olarak listeler.
+### Anime List (GET /animes)
+Lists all animes with pagination.
 
-**Parametreler:**
-- `page`: Sayfa numarası (Varsayılan: 1)
-- `limit`: Sayfa başına öğe sayısı (Varsayılan: 20)
+**Parameters:**
+- `page`: Page number (Default: 1)
+- `limit`: Number of items per page (Default: 20)
 
-**Yanıt (200 OK):**
+**Response (200 OK):**
 ```json
 {
   "data": [
@@ -37,27 +37,27 @@ Tüm animeleri sayfalı olarak listeler.
 
 ---
 
-### Anime Detayı (GET /animes/:slug)
-Belirtilen animenin tam detaylarını getirir (bölümler, kategoriler, ilgili içerikler vb.).
+### Anime Details (GET /animes/:slug)
+Fetches the full details of the specified anime (episodes, categories, related content, etc.).
 
-**Parametreler:**
-- `:slug`: Animedenin benzersiz slug değeri (ör: `ubel-blatt`)
+**Parameters:**
+- `:slug`: Unique slug value of the anime (e.g. `ubel-blatt`)
 
-**Yanıt (200 OK):**
+**Response (200 OK):**
 ```json
 {
   "data": {
     "id": "6781edaad8b0745f144982ef",
     "name": "Ubel Blatt",
-    "description": "Epik bir fantastik macera...",
-    "categories": ["Aksiyon", "Macera"],
+    "description": "An epic fantasy adventure...",
+    "categories": ["Action", "Adventure"],
     "episodes": [
       {
         "episode_number": 1,
         "type": "TV",
         "sources": [
-          { "label": "Birincil (CDN)", "watch_url": "/watch/eyJpZCI6IjY3ODFlZGM3ZDhiMDc0NWYxNDQ5ODJmOSIsInNyYyI6ImJhY2tibGF6ZSIsInRzIjoxNzQxNTM4NTQzMTIxfQ==" },
-          { "label": "Ayna 1", "watch_url": "/watch/..." }
+          { "label": "Primary (CDN)", "watch_url": "/watch/eyJpZCI6IjY3ODFlZGM3ZDhiMDc0NWYxNDQ5ODJmOSIsInNyYyI6ImJhY2tibGF6ZSIsInRzIjoxNzQxNTM4NTQzMTIxfQ==" },
+          { "label": "Mirror 1", "watch_url": "/watch/..." }
         ]
       }
     ],
@@ -70,19 +70,19 @@ Belirtilen animenin tam detaylarını getirir (bölümler, kategoriler, ilgili i
 
 ---
 
-### Video Akışı (GET /watch/:token)
+### Video Stream (GET /watch/:token)
 
-**Not:** Bu uç nokta doğrudan video verisi (binary) döndürür. Token’lar zaman damgası içerir ve geçicidir. HTML5 Video oynatıcı ile uyumludur (Range header desteği vardır).
+**Note:** This endpoint directly returns video data (binary). Tokens include a timestamp and are temporary. It is compatible with HTML5 Video players (Range header is supported).
 
 ---
 
-### Arama (GET /search)
-Hızlı isim tabanlı arama yapar.
+### Search (GET /search)
+Performs a quick name-based search.
 
-**Parametreler:**
-- `q`: Arama terimi (En az 2 karakter olmalı)
+**Parameters:**
+- `q`: Search term (Must be at least 2 characters)
 
-**Yanıt (200 OK):**
+**Response (200 OK):**
 ```json
 {
   "data": [
@@ -98,23 +98,23 @@ Hızlı isim tabanlı arama yapar.
 
 ---
 
-### Kategoriler ve Filtreleme
+### Categories and Filtering
 
-| Uç Nokta                        | Açıklama                                      |
+| Endpoint                        | Description                                      |
 |:--------------------------------|:----------------------------------------------|
-| GET /categories                 | Tüm kategorileri ve ID’lerini listeler        |
-| GET /categories/:id/animes      | Belirli bir kategori ID’sine ait animeleri listeler |
+| GET /categories                 | Lists all categories and their IDs        |
+| GET /categories/:id/animes      | Lists animes belonging to a specific category ID |
 
-**Kategori ID Tablosu:**
-1: Aksiyon, 2: Askeri, 3: Bilim Kurgu, 4: Büyü, 5: Doğaüstü, 6: Dram, 7: Ecchi, 8: Fantastik, 9: Gerilim, 10: Gizem...  
-(Tam liste `/categories` uç noktasından alınabilir.)
+**Category ID Table:**
+1: Action, 2: Military, 3: Sci-Fi, 4: Magic, 5: Supernatural, 6: Drama, 7: Ecchi, 8: Fantasy, 9: Thriller, 10: Mystery...  
+(The full list can be obtained from the `/categories` endpoint.)
 
 ---
 
-## Hata Kodları
+## Error Codes
 
-- **400 Bad Request**: Eksik veya geçersiz parametreler  
-- **403 Forbidden**: IP yasaklanmış veya geçersiz token  
-- **404 Not Found**: Kayıt bulunamadı  
-- **429 Too Many Requests**: Rate limit aşıldı  
-- **500 Internal Server Error**: Beklenmeyen sunucu hatası  
+- **400 Bad Request**: Missing or invalid parameters  
+- **403 Forbidden**: IP banned or invalid token  
+- **404 Not Found**: Record not found  
+- **429 Too Many Requests**: Rate limit exceeded  
+- **500 Internal Server Error**: Unexpected server error  

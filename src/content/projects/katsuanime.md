@@ -1,10 +1,10 @@
 ---
 title: KatsuAnime
-description: Türk anime izleme web sitesi.
+description: Turkish anime streaming website.
 featured: true
 link: https://katsuanime.vercel.app
 tech:
   - Next.js
   - Vanilla CSS
 ---
-Boş zamanımda yaptığım bir proje olduğu için çok fazla detay yok. [Meraklısına github.](https://github.com/ewgsta/katsuanime)
+Since it's a project I made in my spare time, there are not many details. [For those who are curious, github.](https://github.com/ewgsta/katsuanime)

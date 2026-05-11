@@ -1,6 +1,6 @@
 ---
 title: Tsukuyomi
-description: Çoklu platform destekli, self hosted müzik çalar.
+description: Multi-platform supported, self-hosted music player.
 featured: true
 link: https://github.com/ewgsta/tsukuyomi
 tech:
@@ -8,82 +8,82 @@ tech:
   - FastAPI
   - Expo
 ---
-##  Özellikler
+## Features
 
-### Arayüz & Deneyim
-*   **Modern Tasarım:** Buzlu cam efektleri, canlı renkler ve akıcı animasyonlar.
-*   **Duyarlı (Responsive) Yapı:** Masaüstü ve mobil cihazlarda kusursuz görünüm.
-*   **Mini & Tam Ekran Oynatıcı:** Şarkı kontrolünü her an elinizin altında tutun.
+### Interface & Experience
+*   **Modern Design:** Frosted glass effects, vibrant colors, and smooth animations.
+*   **Responsive Layout:** Flawless look on desktop and mobile devices.
+*   **Mini & Full Screen Player:** Keep the song control always at hand.
 
-### Müzik Yönetimi
-*   **Otomatik Tarama & İzleme:** Belirlediğiniz klasörlerdeki değişikleri anlık algılar (Watchdog entegrasyonu).
-*   **Akıllı Meta Veri Okuma:** ID3 tagları, kapak resimleri ve FLAC/MP3 desteği.
-*   **Gelişmiş Arama:** Sanatçı, albüm veya şarkı ismine göre anlık filtreleme.
-*   **Favoriler & Çalma Listeleri:** Kendi listelerinizi oluşturun, favorilerinizi yönetin.
+### Music Management
+*   **Auto Scan & Watch:** Instantly detects changes in your selected folders (Watchdog integration).
+*   **Smart Metadata Reading:** ID3 tags, cover images, and FLAC/MP3 support.
+*   **Advanced Search:** Instant filtering by artist, album, or song name.
+*   **Favorites & Playlists:** Create your own lists and manage your favorites.
 
-### Mobil (Expo) (Eh işte, biraz biraz yapıyorum şuan kullanılabilecek gibi değil.)
-*   **Native Performans:** React Native ile geliştirilmiş akıcı mobil deneyim.
-*   **Senkronizasyon:** Aynı ağ üzerindeki sunucuya bağlanarak kütüphanenize heryerden erişim.
-*   **Arka Planda Çalma:** Uygulama kapalıyken bile müzik keyfi (iOS/Android).
+### Mobile (Expo) (It's okay, I'm working on it a bit, not really usable right now.)
+*   **Native Performance:** Smooth mobile experience developed with React Native.
+*   **Synchronization:** Access your library from anywhere by connecting to the server on the same network.
+*   **Background Play:** Enjoy music even when the app is closed (iOS/Android).
 
-### Teknik Özellikler
-*   **Streaming:** Büyük dosyaları bile beklemeden oynatabilen range-request destekli streaming.
-*   **Canlı Şarkı Sözleri:** `lrclib.net` entegrasyonu ile senkronize veya düz şarkı sözleri.
-*   **Hot-Reload Database:** SQLite tabanlı hızlı veri yönetimi.
+### Technical Specifications
+*   **Streaming:** Range-request supported streaming that can play even large files without waiting.
+*   **Live Lyrics:** Synchronized or plain lyrics with `lrclib.net` integration.
+*   **Hot-Reload Database:** Fast data management based on SQLite.
 
 ---
 
-## Kurulum ve Çalıştırma
+## Installation and Running
 
-Proje Sunucu (Server) ve İstemci (Client) olmak üzere iki ana parçadan oluşur.
+The project consists of two main parts: Server and Client.
 
-### Gereksinimler
+### Requirements
 *   Python 3.9+
-*   Node.js 18+ & Bun (veya npm/yarn)
+*   Node.js 18+ & Bun (or npm/yarn)
 
-### 1. Sunucu (Backend) Kurulumu
-Sunucu, müzik dosyalarını tarar ve API sağlar.
+### 1. Server (Backend) Installation
+The server scans music files and provides the API.
 
 ```bash
 cd server
 
-# Sanal ortam oluşturma (Önerilir)
+# Create a virtual environment (Recommended)
 python -m venv venv
-# Windows için:
+# For Windows:
 .\venv\Scripts\activate
 
-# Bağımlılıkları yükle
+# Install dependencies
 pip install -r requirements.txt
 
-# Sunucuyu başlat (Varsayılan port: 8000)
+# Start the server (Default port: 8000)
 python main.py
 ```
 
-### 2. İstemci (Web/Desktop) Kurulumu
-Modern web / tauri arayüzü.
+### 2. Client (Web/Desktop) Installation
+Modern web / tauri interface.
 
 ```bash
 cd client
 
-# Bağımlılıkları yükle
+# Install dependencies
 bun install
 
-# Geliştirme modunda başlat (Web)
+# Start in development mode (Web)
 bun run dev
 
-# Masaüstü Uygulaması (Tauri) olarak başlat
+# Start as Desktop App (Tauri)
 bun run tauri dev
 ```
 
-### 3. Mobil (Expo) Uygulama
-Mobil cihazınızda çalıştırmak için.
+### 3. Mobile (Expo) App
+To run on your mobile device.
 
 ```bash
 cd client
 
-# Android için başlat (veya sadece 'bun run mobile' ile QR okut)
+# Start for Android (or just scan QR with 'bun run mobile')
 bun run mobile -- --clear
 ```
-_Not: Telefonunuzun ve bilgisayarınızın aynı Wi-Fi ağında olduğundan emin olun._
+_Note: Make sure your phone and computer are on the same Wi-Fi network._
 
-[Daha fazlası için github sayfasını ziyaret edin!](https://github.com/ewgsta/tsukuyomi)
+[Visit the github page for more!](https://github.com/ewgsta/tsukuyomi)

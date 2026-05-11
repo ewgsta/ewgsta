@@ -1,19 +1,18 @@
 postsLabel: Posts
-backToPostsLabel: ← Paylaşımlara Dön
+backToPostsLabel: ← Back to Posts
 siteTitle: Furkan (ewgsta)
 siteDescription: Full-stack Developer
 siteUrl: https://www.ewgsta.me
 siteLanguage: en
 siteAuthor: Furkan
-siteKeywords: full stack, developer, geliştirici, yazılım, blog, portfolio,
-  software, software developer
+siteKeywords: full stack, developer, software engineer, web development, frontend, backend, programming, coding, blog, portfolio, software, javascript, typescript, react, nodejs
 ogImage: https://github.com/ewgsta.png
 logoUrl: https://github.com/ewgsta.png
-logoText: " ewgsta.png"
+logoText: 
 footerText: Furkan C. | hello[at]ewgsta.me
 heroTitle: Furkan :3
 quoteText: Full-stack Developer
-findMeOnLabel: Find me ob
+findMeOnLabel: Find me on
 projectsLabel: Projects
 readMoreLabel: Read more
 viewAllProjectsLabel: View all projects
@@ -23,8 +22,8 @@ projectsSlug: projects
 searchPlaceholder: Search
 searchNoResults: 'No results were found: "{query}".'
 searchEmptyState: Type to search
-backToHomeLabel: ← Ana Sayfaya Dön
-backToProjectsLabel: ← Projelere Dön
+backToHomeLabel: ← Back to Home
+backToProjectsLabel: ← Back to Projects
 links:
   - platform: fa-brands fa-instagram
     url: https://instagram.com/furkn05_
@@ -34,3 +33,9 @@ links:
     url: https://www.reddit.com/user/ewgsta/
   - platform: fa-brands fa-discord
     url: https://discord.com/users/752050889958883380
+  - platform: fa-brands fa-bluesky
+    url: https://bsky.app/profile/ewgsta.bsky.social
+  - platform: fa-solid fa-envelope
+    url: "#"
+    isCopyable: true
+    copyValue: hello@ewgsta.me

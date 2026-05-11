@@ -1,50 +1,49 @@
 ---
 title: Weeb CLI
-description: Terminalinizden reklamsız, dikkat dağıtıcı unsur olmadan kolay ve
-  hızlı şekilde anime izlemenizi sağlayan Python aracı.
+description: A Python tool that allows you to watch anime easily and quickly from your terminal without ads and distractions.
 featured: true
 link: https://github.com/ewgsta/weeb-cli
 tech:
   - Python
 ---
-## Özellikler
+## Features
 
-### Çoklu Kaynak Desteği
-- **Türkçe**: Animecix, Turkanime, Anizle
-- **İngilizce**: HiAnime, AllAnime
+### Multi-Source Support
+- **Turkish**: Animecix, Turkanime, Anizle
+- **English**: HiAnime, AllAnime
 
-### Akıllı İzleme
-- MPV entegrasyonu ile yüksek kaliteli HLS/MP4 yayınları
-- Kaldığınız yerden devam etme (dakika bazında)
-- İzleme geçmişi ve istatistikler
-- Tamamlanan (✓) ve devam eden (●) bölüm işaretleri
+### Smart Watching
+- High-quality HLS/MP4 streams with MPV integration
+- Resume from where you left off (minute-based)
+- Watch history and statistics
+- Completed (✓) and ongoing (●) episode markers
 
-### Güçlü İndirme Sistemi
-- **Aria2** ile çoklu bağlantılı hızlı indirme
-- **yt-dlp** ile karmaşık yayın desteği
-- Kuyruk sistemi ve eşzamanlı indirme
-- Yarım kalan indirmeleri devam ettirme
-- Akıllı dosya isimlendirme (`Anime Adı - S1B1.mp4`)
+### Powerful Download System
+- Fast multi-connection downloading with **Aria2**
+- Complex stream support with **yt-dlp**
+- Queue system and concurrent downloading
+- Resume incomplete downloads
+- Smart file naming (`Anime Name - S1E1.mp4`)
 
-### Yerel Kütüphane
-- İndirilen animeleri otomatik tarama
-- Harici disk desteği (USB, HDD)
-- Çevrimdışı anime indexleme
-- Tüm kaynaklarda arama
+### Local Library
+- Auto-scan downloaded animes
+- External drive support (USB, HDD)
+- Offline anime indexing
+- Search across all sources
 
-### Ek Özellikler
-- SQLite veritabanı (hızlı ve güvenilir)
-- İndirme tamamlandığında sistem bildirimi
-- Discord RPC entegrasyonu (izlediğiniz anime Discord'da görünsün)
-- Arama geçmişi
-- Debug modu ve loglama
-- Otomatik güncelleme kontrolü
+### Additional Features
+- SQLite database (fast and reliable)
+- System notification when download is complete
+- Discord RPC integration (show the anime you are watching on Discord)
+- Search history
+- Debug mode and logging
+- Auto update check
 
 ---
 
-## Kurulum
+## Installation
 
-### PyPI (Evrensel)
+### PyPI (Universal)
 ```bash
 pip install weeb-cli
 ```
@@ -55,13 +54,13 @@ yay -S weeb-cli
 ```
 
 ### Portable
-[Releases](https://github.com/ewgsta/weeb-cli/releases) sayfasından platformunuza uygun dosyayı indirin.
+Download the appropriate file for your platform from the [Releases](https://github.com/ewgsta/weeb-cli/releases) page.
 
-### Geliştirici Kurulumu
+### Developer Installation
 ```bash
 git clone https://github.com/ewgsta/weeb-cli.git
 cd weeb-cli
 pip install -e .
 ```
 
-[Daha fazlası için Github sayfasını ziyaret edin!](https://github.com/ewgsta/weeb-cli)
+[Visit the Github page for more!](https://github.com/ewgsta/weeb-cli)
