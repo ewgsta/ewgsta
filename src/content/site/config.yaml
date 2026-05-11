@@ -1,27 +1,28 @@
-postsLabel: Paylaşımlarım
+postsLabel: Posts
 backToPostsLabel: ← Paylaşımlara Dön
 siteTitle: Furkan (ewgsta)
-siteDescription: Kendi halinde Full Stack geliştirici.
+siteDescription: Full-stack Developer
 siteUrl: https://www.ewgsta.me
-siteLanguage: tr
+siteLanguage: en
 siteAuthor: Furkan
-siteKeywords: full stack, developer, geliştirici, yazılım, blog, portfolio
+siteKeywords: full stack, developer, geliştirici, yazılım, blog, portfolio,
+  software, software developer
 ogImage: https://github.com/ewgsta.png
 logoUrl: https://github.com/ewgsta.png
-logoText: " "
-footerText: Selam 🫠
+logoText: " ewgsta.png"
+footerText: Furkan C. | hello[at]ewgsta.me
 heroTitle: Furkan :3
-quoteText: Kendi halinde Full Stack geliştirici.
-findMeOnLabel: Bana ulaş
-projectsLabel: Projelerim
-readMoreLabel: Daha fazlasını görüntüle
-viewAllProjectsLabel: Projelerim
-viewAllPostsLabel: Paylaşımlarım
-postsSlug: paylasımlar
-projectsSlug: projeler
-searchPlaceholder: Post ve projelerde ara...
-searchNoResults: '"{query}" için sonuç bulunamadı'
-searchEmptyState: Aramaya başlamak için yazın...
+quoteText: Full-stack Developer
+findMeOnLabel: Find me ob
+projectsLabel: Projects
+readMoreLabel: Read more
+viewAllProjectsLabel: View all projects
+viewAllPostsLabel: View all posts
+postsSlug: posts
+projectsSlug: projects
+searchPlaceholder: Search
+searchNoResults: 'No results were found: "{query}".'
+searchEmptyState: Type to search
 backToHomeLabel: ← Ana Sayfaya Dön
 backToProjectsLabel: ← Projelere Dön
 links:
