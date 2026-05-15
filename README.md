@@ -3,7 +3,6 @@
 #### Platform & Tools
 [![](https://img.shields.io/badge/Laptop-ASUS%20Zenbook-31405e?style=for-the-badge&logo=asus&logoColor=ffffff)](https://www.asus.com/laptops/for-home/zenbook/)
 [![](https://img.shields.io/badge/OS-Arch%20Linux-33aadd?style=for-the-badge&logo=arch-linux&logoColor=ffffff)](https://www.archlinux.org/)
-[![](https://img.shields.io/badge/CMF-Phone%201-FF6719?style=for-the-badge&logo=nothing&logoColor=ffffff)](https://intl.cmf.tech/pages/phone-1)
 [![](https://img.shields.io/badge/IDE-Visual%20Studio%20Code-blue?style=for-the-badge&logo=visual-studio-code&logoColor=ffffff)](https://code.visualstudio.com/)
 
 #### Languages & Frameworks
