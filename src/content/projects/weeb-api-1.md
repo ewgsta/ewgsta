@@ -5,6 +5,7 @@ featured: true
 link: https://github.com/ewgsta/weeb-api
 tech:
   - Hono
+  - TS
 ---
 # Weeb API
 Anime API documentation developed for Weeb CLI.
