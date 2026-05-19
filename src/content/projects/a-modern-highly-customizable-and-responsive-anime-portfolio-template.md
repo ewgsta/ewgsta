@@ -1,5 +1,5 @@
 ---
-title: "A modern, highly customizable, and responsive anime portfolio template. "
+title: MyAnimeProfile
 description: A modern, highly customizable, and responsive anime portfolio template.
 featured: true
 link: https://github.com/ewgsta/myanimeprofile
