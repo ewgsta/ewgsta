@@ -1,7 +1,7 @@
 ---
 title: Manga API
 description: Basic manga API.
-featured: false
+featured: true
 link: https://github.com/ewgsta/manga-api
 tech:
   - Hono
