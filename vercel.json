@@ -1,23 +1,8 @@
 {
     "rewrites": [
         {
-            "source": "/((?!admin|api|assets|images|vite\\.svg).*)",
+            "source": "/((?!api|assets|images|vite\\.svg).*)",
             "destination": "/index.html"
-        }
-    ],
-    "headers": [
-        {
-            "source": "/admin/config.yml",
-            "headers": [
-                {
-                    "key": "Content-Type",
-                    "value": "text/yaml"
-                },
-                {
-                    "key": "Cache-Control",
-                    "value": "no-cache"
-                }
-            ]
         }
     ]
 }
