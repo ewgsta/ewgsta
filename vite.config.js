@@ -32,6 +32,9 @@ function getRoutes() {
 }
 
 export default defineConfig({
+  define: {
+    'process.env': {}
+  },
   plugins: [
     {
       name: 'admin-static-serve',
@@ -71,12 +74,17 @@ export default defineConfig({
   ],
   server: {
     host: '127.0.0.1',
+    proxy: {
+      '/api': {
+        target: 'https://www.ewgsta.me',
+        changeOrigin: true
+      }
+    }
   },
   build: {
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        admin: resolve(__dirname, 'public/admin/index.html'),
       },
     },
   },

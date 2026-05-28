@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { lazy, Suspense } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import Header from './components/Header';
@@ -13,7 +13,33 @@ import SEO from './components/SEO';
 import SearchModal from './components/SearchModal';
 import { postsSlug, projectsSlug } from './data/siteData';
 
+const Admin = lazy(() => import('./pages/Admin'));
+
 function App() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
+  if (isAdminRoute) {
+    return (
+      <>
+        <Routes>
+          <Route path="/admin/*" element={
+            <Suspense fallback={
+              <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#191919' }}>
+                <div style={{ width: '20px', height: '20px', border: '2px solid rgba(255,255,255,0.1)', borderTopColor: 'rgba(255,255,255,0.4)', borderRadius: '50%', animation: 'admin-spin 0.8s linear infinite' }}></div>
+                <style>{`@keyframes admin-spin { to { transform: rotate(360deg); } }`}</style>
+              </div>
+            }>
+              <Admin />
+            </Suspense>
+          } />
+        </Routes>
+        <Analytics />
+        <SpeedInsights />
+      </>
+    );
+  }
+
   return (
     <div className="container">
       <SEO />

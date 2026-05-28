@@ -20,7 +20,7 @@ export const ogImage = siteData.ogImage || '';
 
 // Branding
 export const logoUrl = siteData.logoUrl || 'https://github.com/ewgsta.png';
-export const logoText = siteData.logoText || 'Logo Text Here';
+export const logoText = siteData.logoText !== undefined ? siteData.logoText : 'Logo Text Here';
 export const footerText = siteData.footerText || '© 2026 Site Title Here. All rights reserved.';
 
 export const heroTitle = siteData.heroTitle || 'Hero Title Here';
