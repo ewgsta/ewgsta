@@ -5,9 +5,10 @@ siteDescription: Full-stack Developer
 siteUrl: https://www.ewgsta.me
 siteLanguage: en
 siteAuthor: Furkan
-siteKeywords: full stack, developer, software engineer, web development,
-  frontend, backend, programming, coding, blog, portfolio, software, javascript,
-  typescript, react, nodejs
+siteKeywords: >-
+  full stack, developer, software engineer, web development, frontend, backend,
+  programming, coding, blog, portfolio, software, javascript, typescript, react,
+  nodejs
 ogImage: https://github.com/ewgsta.png
 logoUrl: https://github.com/ewgsta.png
 logoText: Furkan
@@ -32,6 +33,6 @@ links:
   - platform: fa-brands fa-bluesky
     url: https://bsky.app/profile/ewgsta.bsky.social
   - platform: fa-solid fa-envelope
-    url: "#"
+    url: '#'
     isCopyable: true
     copyValue: hello@ewgsta.me
