@@ -5,7 +5,7 @@ date: '2026-06-07T17:41:49.018Z'
 layout: blog
 thumbnail: ''
 ---
-Ufak işlerim için uygun fiyatlı vds sunucu hizmeti arıyordum, bir çok sağlayıcı firmaya baktıktan sonra şunu fark ettim ki bir kaç firma dışında hosting firmaları rezalet. Burada ki lafımda özellikle üstünü çizmekte fayda var, köklü ve kurumsal firmalardan bahsetmiyorum o tür firmalarda ufak bir araştırma ile fark edebileceğiniz üzere bireysel projeler için çok yüksek maliyetlere sahip.
+Ufak bir işim için uygun fiyatlı vds sunucu hizmeti aramaya karar verdim, bir çok sağlayıcı firmaya baktıktan sonra şunu fark ettim ki bir kaç firma dışında hosting firmaları rezalet. Burada ki lafımda özellikle üstünü çizmekte fayda var, köklü ve kurumsal firmalardan bahsetmiyorum o tür firmalarda ufak bir araştırma ile fark edebileceğiniz üzere bireysel projeler için çok yüksek maliyetlere sahip.
 
 ---
 
