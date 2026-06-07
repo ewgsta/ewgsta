@@ -143,7 +143,7 @@ Kendiimde kullandığım bazı firmalar aşağı da göz atabilirsiniz. Reklam d
 ### Önerilen Alternatif
 
 | Firma | Fiyat | Lokasyon | 
-|---|---|---|---|---|---|---|
+|---|---|---|
 | **Nodesty** | https://nodesty.com/tr/service/servers/virtual-9950x | Almanya, ABD |
 | **Hetzner** | https://hetzner.com/cloud | Almanya |
 | **Hayalhost** | https://www.hayalhost.com/bulut-sunucu/ | Türkiye |
