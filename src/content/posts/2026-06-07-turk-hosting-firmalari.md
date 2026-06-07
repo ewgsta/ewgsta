@@ -16,7 +16,6 @@ Ufak bir işim için uygun fiyatlı vds sunucu hizmeti aramaya karar verdim, bir
 | Firma | Paket | Fiyat | CPU | RAM | Disk | Trafik | Lokasyon | Durum |
 |---|---|---|---|---|---|---|---|---|
 | **SunucumFix** | VDS Sunucu-01 | 149,99 ₺ | 2 Core i9 | 4 GB DDR4 | 50 GB SSD | Limitsiz | TR | 
-| **VDS-NET** | TR-VDS#3 | 174,99 ₺ | 4 CPU Platinum | 4 GB DDR4 | 35 GB | Limitsiz | TR | 
 | **Norasis** | VDS Sunucu-01 | 119,99 ₺ | 4 CPU | 4 GB | 40 GB NVMe | Limitsiz | TR |
 | **Poyraz Hosting** | VPS4 | 127,97 ₺ | 4 CPU | 4 GB | 30 GB | Limitsiz | TR | 
 | **Sunucumfix** | VDS-01 | 149,54 ₺ | 2 Core i9 | 4 GB ECC | 50 GB SSD | Limitsiz | TR | 
