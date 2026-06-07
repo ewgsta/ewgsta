@@ -68,7 +68,7 @@ Firma kaynaklı panel ve IP değişikliği sırasında veri kaybı söz konusu o
 
 ### Keyubu
 **Fiyat:** 164,90 ₺ | **Kaynak:** [Şikayetvar](https://www.sikayetvar.com/vds) 
-Aktif web siteleri ve gelir getiren projeleri olan kullanıcının sunucusu aniden kapanmış, veri erişimi kesilmiş. Altyapı firmasından kaynaklı tüm sunucular kapatılmış. Açıkcası bu firmayı kullandığım dönemde boş duruyordu o yüzden net yorum yapamamakla birlikte yaşadığım tek sorun başka sunucuları benim sunucuma yönlendiriyordu veriyordu
+Aktif web siteleri ve gelir getiren projeleri olan kullanıcının sunucusu aniden kapanmış, veri erişimi kesilmiş. Altyapı firmasından kaynaklı tüm sunucular kapatılmış. Açıkcası bu firmayı kullandığım dönemde boş duruyordu o yüzden net yorum yapamamakla birlikte yaşadığım tek sorun başka sunucuları benim sunucuma yönlendiriyordu.
 
 .
 
