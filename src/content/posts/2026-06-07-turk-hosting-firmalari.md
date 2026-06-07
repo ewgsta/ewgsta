@@ -11,6 +11,7 @@ Ufak işlerim için uygun fiyatlı vds sunucu hizmeti arıyordum, bir çok sağl
 
 ## Karşılaştırma Tablosu
 > Tüm firmalarda belirttiğim üzere kişisel ve küçük bir proje için aradığımı belirtmiştim, bu nedenle baz paket 2 CPU 4 RAM 30GB Depolama olacak şekildedir, elbette bazı firmalar üç aşağı beş yukarı olabilir.
+İşlemciler hakkında genel olarakta şunu söylemekte fayda var, bu fiyatlara overshell olmayan düzgün bölünmüş sunucu aramamak gerek ben buna da razıydım.
 
 | Firma | Paket | Fiyat | CPU | RAM | Disk | Trafik | Lokasyon | Durum |
 |---|---|---|---|---|---|---|---|---|
@@ -48,7 +49,7 @@ Plansız kesintiler, müşteri mağduriyeti, sunucu kapatma ve iade reddi şikay
 ### Poyraz Hosting
 **Fiyat:** 127,97 ₺ | **Kaynak:** [Şikayetvar](https://www.sikayetvar.com/poyraz-hosting/poyraz-hosting-emek-ve-parami-hic-etti)
 
-Ayın en az 5 günü sunucu kesintisi yaşandığı belgelenmiş. Destek ekibi profosyonele yakışmayacak üslüp kullanıyor ve geç dönüyor. Ödeme gecikmesinde uyarı vermeden verileri sildiği için de riskli ve tercih edilemez.
+Ayın en az 5 günü sunucu kesintisi yaşandığı belgelenmiş. Destek ekibi profesyonele yakışmayacak üslufp kullanıyor ve geç dönüyor. Ödeme gecikmesinde uyarı vermeden verileri sildiği için de riskli ve tercih edilemez.
 
 ---
 
@@ -68,7 +69,7 @@ Firma kaynaklı panel ve IP değişikliği sırasında veri kaybı söz konusu o
 
 ### Keyubu
 **Fiyat:** 164,90 ₺ | **Kaynak:** [Şikayetvar](https://www.sikayetvar.com/vds) 
-Aktif web siteleri ve gelir getiren projeleri olan kullanıcının sunucusu aniden kapanmış, veri erişimi kesilmiş. Altyapı firmasından kaynaklı tüm sunucular kapatılmış. Açıkcası bu firmayı kullandığım dönemde boş duruyordu o yüzden net yorum yapamamakla birlikte yaşadığım tek sorun başka sunucuların adresleri benim sunucuma yönlendiriyordu veriyordu
+Aktif web siteleri ve gelir getiren projeleri olan kullanıcının sunucusu aniden kapanmış, veri erişimi kesilmiş. Altyapı firmasından kaynaklı tüm sunucular kapatılmış. Açıkcası bu firmayı kullandığım dönemde boş duruyordu o yüzden net yorum yapamamakla birlikte yaşadığım tek sorun başka sunucuları benim sunucuma yönlendiriyordu veriyordu
 
 .
 
@@ -134,7 +135,7 @@ Vaat edilen donanım ve altyapı özellikleri sağlanmamış. Servisler aktive e
 
 250 TL altında, Türkiye lokasyonlu, güvenilir geçmişi olan hosting firması **mevcut değil.**
 
-Bu nedenle size naçiizane önerim, biraz daha uygun biraz daha ucuz olsun diye katıra binmek yerine güvenilir sağlayıcılardan alın. İnanın vereceğiniz bir kaç kuruş yaşayacağınız sorunlardan önemli değil.
+Bu nedenle size naçizane önerim, biraz daha uygun biraz daha ucuz olsun diye katıra binmek yerine güvenilir sağlayıcılardan alın. İnanın vereceğiniz bir kaç kuruş yaşayacağınız sorunlardan önemli değil.
 Şimdi diyeceksiniz "eee sen neden kendi önerine uymadın?", aktif olarak kullandığım birden çok firma da dedicated/vds sunucularım mevcut. Boş vaktimde araştırarak en ucuz ne kadara kapatabiliriz gibi bir deneme yapmak istemiştim ki, denemeye gelmeden sadece yorumlarla bile böyle bir şeyin imkansız olduğunu anladım.
 
 Kendiimde kullandığım bazı firmalar aşağı da göz atabilirsiniz. Reklam değildir kendi deneyimlerim doğrultusunda sunucuların kalitesi ve müşteri hizmetleri konusunda asla üzmeyecek firmalar olduğunu söyleyebilirim.
