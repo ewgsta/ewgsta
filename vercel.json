@@ -1,7 +1,15 @@
 {
     "rewrites": [
         {
-            "source": "/((?!api|assets|images|vite\\.svg).*)",
+            "source": "/stats.js",
+            "destination": "https://analytics.ewgsta.me/script.js"
+        },
+        {
+            "source": "/api/send",
+            "destination": "https://analytics.ewgsta.me/api/send"
+        },
+        {
+            "source": "/((?!api|assets|images|vite\\.svg|stats\\.js).*)",
             "destination": "/index.html"
         }
     ]

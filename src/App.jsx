@@ -1,7 +1,5 @@
 import React, { lazy, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -34,8 +32,6 @@ function App() {
             </Suspense>
           } />
         </Routes>
-        <Analytics />
-        <SpeedInsights />
       </>
     );
   }
@@ -58,9 +54,6 @@ function App() {
 
       <Footer />
 
-      {/* Vercel Analytics & Speed Insights */}
-      <Analytics />
-      <SpeedInsights />
     </div>
   );
 }
