@@ -9,6 +9,7 @@ import { getProjects } from '../../utils/content';
 import { projectsSlug, backToProjectsLabel } from '../../data/siteData';
 import SEO from '../../components/SEO';
 import Divider from '../../components/Divider';
+import Comments from '../../components/Comments';
 
 const ProjectDetail = () => {
     const { slug } = useParams();
@@ -89,6 +90,7 @@ const ProjectDetail = () => {
                 </div>
             </article>
             <Divider />
+            <Comments />
         </>
     );
 };
