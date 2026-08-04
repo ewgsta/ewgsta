@@ -1,0 +1,24 @@
+import PostItem from './PostItem';
+import SectionHeader from './SectionHeader';
+import { Link } from 'react-router-dom';
+import { postsLabel, readMoreLabel, postsSlug } from '../data/siteData';
+
+interface PostListProps {
+    posts: Array<{ date: string; title: string; slug: string }>;
+}
+
+const PostList = ({ posts }: PostListProps) => {
+    return (
+        <section>
+            <SectionHeader title={postsLabel} />
+            <ul className="post-list">
+                {posts.map((post, index) => (
+                    <PostItem key={index} date={post.date} title={post.title} slug={post.slug} />
+                ))}
+            </ul>
+            <Link to={`/${postsSlug}`} className="read-more-link">{readMoreLabel} →</Link>
+        </section>
+    );
+};
+
+export default PostList;

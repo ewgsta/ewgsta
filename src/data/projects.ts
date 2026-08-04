@@ -1,0 +1,19 @@
+import { parseFrontmatter } from '../utils/content';
+import type { Project } from '../types';
+
+const projectFiles: Record<string, string> = import.meta.glob('../content/projects/*.md', { eager: true, query: '?raw', import: 'default' });
+
+export const projects: Project[] = Object.keys(projectFiles).map(key => {
+    const slug = key.split('/').pop()?.replace(/\.md$/, '') || '';
+    const { data, content } = parseFrontmatter(projectFiles[key]);
+    return {
+        slug,
+        name: data.title || slug,
+        desc: data.description || '',
+        link: data.link || '#',
+        tech: Array.isArray(data.tech) ? data.tech : [],
+        featured: data.featured === true,
+        body: content,
+        content
+    };
+});
