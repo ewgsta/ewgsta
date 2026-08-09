@@ -39,10 +39,25 @@
 
 #### Highlights
 
-|Projects|Stars|Forks|
-|:---|:---|:---|
-|[Weeb CLI](https://github.com/ewgsta/weeb-cli): No browser, no ads, no distractions. Just you and an unparalleled anime viewing experience. | ![Stars](https://img.shields.io/github/stars/ewgsta/weeb-cli?style=flat-square&labelColor=343b41) | ![Forks](https://img.shields.io/github/forks/ewgsta/weeb-cli?style=flat-square&labelColor=343b41) |
-<small>This does not include all of my projects. Visit my <a href="https://ewgsta.me">personal website</a> to see them all.</small>
+<table>
+  <thead>
+    <tr>
+      <th align="left">Projects</th>
+      <th align="left">Stars</th>
+      <th align="left">Forks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/ewgsta/weeb-cli">Weeb CLI</a>: No browser, no ads, no distractions. Just you and an unparalleled anime viewing experience.</td>
+      <td><img src="https://img.shields.io/github/stars/ewgsta/weeb-cli?style=flat-square&labelColor=343b41" alt="Stars" /></td>
+      <td><img src="https://img.shields.io/github/forks/ewgsta/weeb-cli?style=flat-square&labelColor=343b41" alt="Forks" /></td>
+    </tr>
+    <tr>
+      <td colspan="3"><small>This does not include all of my projects. Visit my <a href="https://ewgsta.me">personal website</a> to see them all.</small></td>
+    </tr>
+  </tbody>
+</table>
 
 #### Contact & Links
 [![](https://img.shields.io/badge/Website-ewgsta.me-black?style=for-the-badge&logo=google-chrome&logoColor=white)](https://ewgsta.me)
