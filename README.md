@@ -1,5 +1,3 @@
-## Hi there
-
 #### Platform & Tools
 [![](https://img.shields.io/badge/Laptop-ASUS%20Zenbook-31405e?style=for-the-badge&logo=asus&logoColor=ffffff)](https://www.asus.com/laptops/for-home/zenbook/)
 [![](https://img.shields.io/badge/OS-Arch%20Linux-33aadd?style=for-the-badge&logo=arch-linux&logoColor=ffffff)](https://www.archlinux.org/)
