@@ -59,6 +59,12 @@
     </tr>
     <!---->
     <tr>
+      <td><a href="https://github.com/ewgsta/animesubtitles">animesubtitles</a>: A lightweight and fast web application and REST API service designed to search for and download anime subtitles.</td>
+      <td><img src="https://img.shields.io/github/stars/ewgsta/animesubtitles?style=flat-square&labelColor=343b41" alt="Stars" /></td>
+      <td><img src="https://img.shields.io/github/forks/ewgsta/animesubtitles?style=flat-square&labelColor=343b41" alt="Forks" /></td>
+    </tr>
+    <!---->
+    <tr>
       <td><a href="https://github.com/ewgsta/subtranslation-api">subtranslation-api</a>: AI-powered ASS, SRT, and VTT subtitle translation tool.</td>
       <td><img src="https://img.shields.io/github/stars/ewgsta/subtranslation-api?style=flat-square&labelColor=343b41" alt="Stars" /></td>
       <td><img src="https://img.shields.io/github/forks/ewgsta/subtranslation-api?style=flat-square&labelColor=343b41" alt="Forks" /></td>
