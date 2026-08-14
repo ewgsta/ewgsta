@@ -1,29 +1,36 @@
-#### Platform & Tools
-[![](https://img.shields.io/badge/Laptop-ASUS%20Zenbook-31405e?style=for-the-badge&logo=asus&logoColor=ffffff)](https://www.asus.com/laptops/for-home/zenbook/)
-[![](https://img.shields.io/badge/OS-Arch%20Linux-33aadd?style=for-the-badge&logo=arch-linux&logoColor=ffffff)](https://www.archlinux.org/)
-[![](https://img.shields.io/badge/IDE-Visual%20Studio%20Code-blue?style=for-the-badge&logo=visual-studio-code&logoColor=ffffff)](https://code.visualstudio.com/)
-
 #### Languages & Frameworks
-[![](https://img.shields.io/badge/-Node.js-43853d?style=for-the-badge&logo=node.js&logoColor=ffffff)](https://nodejs.org/)
-[![](https://img.shields.io/badge/-TypeScript-007acc?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![](https://img.shields.io/badge/-JavaScript-f7e018?style=for-the-badge&logo=javascript&logoColor=black)](https://www.ecma-international.org/)
-[![](https://img.shields.io/badge/-Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![](https://img.shields.io/badge/-Rust-000000?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
-[![](https://img.shields.io/badge/-Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)](https://go.dev/)
-[![](https://img.shields.io/badge/-React-61dafb?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
-[![](https://img.shields.io/badge/-Vue.js-4fc08d?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org/)
-[![](https://img.shields.io/badge/-Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![](https://img.shields.io/badge/-TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![](https://img.shields.io/badge/-Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![](https://img.shields.io/badge/-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-[![](https://img.shields.io/badge/-MongoDB-47a248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
-[![](https://img.shields.io/badge/-Nginx-269539?style=for-the-badge&logo=nginx&logoColor=white)](https://nginx.org/)
-[![](https://img.shields.io/badge/-Git-f05032?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
-[![](https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://html.spec.whatwg.org/)
-[![](https://img.shields.io/badge/-CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/)
-[![](https://img.shields.io/badge/-PostCSS-dd3a0a?style=for-the-badge&logo=postcss&logoColor=white)](https://postcss.org/)
-[![](https://img.shields.io/badge/-Yarn-2c8ebb?style=for-the-badge&logo=yarn&logoColor=white)](https://yarnpkg.com/)
-[![](https://img.shields.io/badge/-NPM-cb3837?style=for-the-badge&logo=npm&logoColor=white)](https://npmjs.com/)
+<table>
+  <tbody>
+    <tr>
+      <td width="160"><b>Languages</b></td>
+      <td>
+        <code>TypeScript</code> <code>JavaScript</code> <code>Python</code> 
+        <code>Go</code> <code>Rust</code> <code>Ruby</code>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Frontend</b></td>
+      <td>
+        <code>React</code> <code>Next.js</code> <code>SvelteKit</code> 
+        <code>Nuxt</code> <code>Tailwind CSS</code>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Backend</b></td>
+      <td>
+        <code>Node.js</code> <code>SQL</code> <code>PostgreSQL</code> 
+        <code>MongoDB</code> <code>Drizzle ORM</code>
+      </td>
+    </tr>
+    <tr>
+      <td><b>DevOps & Tools</b></td>
+      <td>
+      <code>Docker</code> <code>Nginx</code> <code>Caddy</code> 
+      <code>Cloudflare</code> <code>Bruno</code> <code>Git</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 #### Github Insights
 <p align="left">
