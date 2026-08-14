@@ -124,6 +124,19 @@
 </table>
 
 #### Contact & Links
-[![](https://img.shields.io/badge/Website-ewgsta.me-black?style=for-the-badge&logo=google-chrome&logoColor=white)](https://ewgsta.me)
-[![](https://img.shields.io/badge/Bluesky-ewgsta.bsky.social-0285FF?style=for-the-badge&logo=bluesky&logoColor=white)](https://bsky.app/profile/ewgsta.me)
-[![](https://img.shields.io/badge/Email-hello@ewgsta.me-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hello@ewgsta.me)
+<table>
+  <tbody>
+    <tr>
+      <td width="160"><b>Website</b></td>
+      <td><a href="https://ewgsta.me">ewgsta.me</a></td>
+    </tr>
+    <tr>
+      <td><b>Bluesky</b></td>
+      <td><a href="https://bsky.app/profile/ewgsta.me">@ewgsta.bsky.social</a></td>
+    </tr>
+    <tr>
+      <td><b>Email</b></td>
+      <td><a href="mailto:hello@ewgsta.me">hello@ewgsta.me</a></td>
+    </tr>
+  </tbody>
+</table>
