@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import SocialSection from '../components/SocialSection.astro';
+import Divider from '../components/Divider.astro';
+import ProjectList from '../components/ProjectList.astro';
+import PostList from '../components/PostList.astro';
+import { getPosts } from '../data/posts';
+import { getProjects } from '../data/projects';
+import { url, getSite } from '../data/site';
+
+const [site, posts, projects] = await Promise.all([
+  getSite(),
+  getPosts(),
+  getProjects(),
+]);
+
+const recentPosts = posts
+  .slice(0, 10)
+  .map((post) => ({
+    date: post.formattedDate,
+    title: post.data.title,
+    slug: post.slug,
+  }));
+const pinnedProjects = projects
+  .slice(0, 5)
+  .map((project) => ({
+    name: project.data.title,
+    desc: project.data.description,
+    link: project.data.link,
+    slug: project.slug,
+  }));
+---
+
+<Layout>
+  <SocialSection />
+  <Divider />
+  <ProjectList projects={pinnedProjects} />
+  <div class="view-all">
+    <a href={url(`/${site.projectsSlug}`)} class="read-more-link">
+      {site.viewAllProjectsLabel}
+      <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+  <Divider />
+  <PostList posts={recentPosts} />
+  <div class="page-bottom-spacer"></div>
+</Layout>

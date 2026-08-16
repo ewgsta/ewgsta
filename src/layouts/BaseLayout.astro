@@ -1,0 +1,119 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SearchModal from '../components/SearchModal.astro';
+import { getSite } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string | null;
+  type?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image,
+  type = 'website',
+  noIndex = false,
+} = Astro.props;
+
+const site = await getSite();
+const pageTitle = title ? `${title} | ${site.siteTitle}` : site.siteTitle;
+const pageDescription = description || site.siteDescription;
+const pageImage = image || site.ogImage || site.logoUrl;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? site.siteUrl);
+const ogLocale = site.siteLanguage === 'tr' ? 'tr_TR' : 'en_US';
+---
+
+<!doctype html>
+<html lang={site.siteLanguage}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons (Font Awesome) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- Analytics -->
+    <script
+      is:inline
+      defer
+      src="https://analytics.ewgsta.me/script.js"
+      data-website-id="b8038cce-868b-4057-a47a-f5180fd1017b"
+    ></script>
+
+    <!-- Primary Meta Tags -->
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={pageDescription} />
+    {site.siteKeywords && <meta name="keywords" content={site.siteKeywords} />}
+    <meta name="author" content={site.siteAuthor} />
+    <link rel="canonical" href={canonicalURL} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href={site.logoUrl} />
+    <link rel="apple-touch-icon" href={site.logoUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={pageImage} />
+    <meta property="og:site_name" content={site.siteTitle} />
+    <meta property="og:locale" content={ogLocale} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={pageImage} />
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#121212" />
+    <meta name="msapplication-TileColor" content="#121212" />
+
+    <!-- Prevent theme flash (runs before paint) -->
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme =
+            stored ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <Header />
+      <main style="flex: 1; width: 100%;">
+        <slot />
+      </main>
+      <Footer />
+      <SearchModal />
+    </div>
+  </body>
+</html>

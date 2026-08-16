@@ -1,0 +1,28 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import ProjectItem from './ProjectItem.astro';
+import { getSite } from '../data/site';
+
+interface Props {
+  projects: Array<{ name: string; desc: string; link: string; slug?: string }>;
+}
+
+const { projects } = Astro.props;
+const site = await getSite();
+---
+
+<section>
+  <SectionHeader title={site.projectsLabel} />
+  <ul class="project-list">
+    {
+      projects.map((project) => (
+        <ProjectItem
+          name={project.name}
+          desc={project.desc}
+          link={project.link}
+          slug={project.slug}
+        />
+      ))
+    }
+  </ul>
+</section>

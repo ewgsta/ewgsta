@@ -1,0 +1,83 @@
+---
+import { getSite, url } from '../data/site';
+
+const site = await getSite();
+const projectsUrl = url(`/${site.projectsSlug}`);
+const postsUrl = url(`/${site.postsSlug}`);
+const rssUrl = url('/rss.xml');
+---
+
+<footer>
+  <div class="footer-info">
+    {site.footerText && <div class="footer-text">{site.footerText}</div>}
+  </div>
+
+  <div class="footer-actions">
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href={projectsUrl}>{site.projectsLabel}</a>
+      <a href={postsUrl}>{site.postsLabel}</a>
+      <a href={rssUrl} class="footer-rss" aria-label="RSS feed">
+        <i class="fa-solid fa-rss" aria-hidden="true"></i>
+        RSS
+      </a>
+    </nav>
+
+    <ul class="footer-social">
+      {
+        site.socialLinks.map((link) => (
+          <li>
+            {link.isCopyable ? (
+              <a
+                href="#"
+                class="social-copy"
+                data-copy={link.copyValue || link.url}
+                title={link.label || link.platform}
+              >
+                <i class={link.platform} aria-hidden="true"></i>
+                <span class="copy-tooltip">Copied!</span>
+              </a>
+            ) : (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={link.label || link.platform}
+              >
+                <i class={link.platform} aria-hidden="true"></i>
+              </a>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top" aria-hidden="true" tabindex="-1">
+  <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+</button>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.back-to-top');
+  if (btn) {
+    const toggle = () => btn.classList.toggle('visible', window.scrollY > 400);
+    window.addEventListener('scroll', toggle, { passive: true });
+    toggle();
+    btn.addEventListener('click', () =>
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    );
+  }
+
+  document.querySelectorAll('a[data-copy]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const value = el.getAttribute('data-copy') || '';
+      navigator.clipboard?.writeText(value);
+      const tip = el.querySelector<HTMLElement>('.copy-tooltip');
+      if (tip) {
+        tip.classList.add('visible');
+        setTimeout(() => tip.classList.remove('visible'), 2000);
+      }
+    });
+  });
+</script>

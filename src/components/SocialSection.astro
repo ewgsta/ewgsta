@@ -1,0 +1,58 @@
+---
+import { getSite } from '../data/site';
+
+const site = await getSite();
+---
+
+<section>
+  <h2 class="hero-title">{site.heroTitle}</h2>
+  <p class="quote-text">{site.quoteText}</p>
+
+  <div class="social-row">
+    <span class="find-me-text">{site.findMeOnLabel}</span>
+
+    {
+      site.socialLinks.length > 0 ? (
+        site.socialLinks.map((link) =>
+          link.isCopyable ? (
+            <a
+              class="social-copy"
+              href="#"
+              data-copy={link.copyValue || link.url}
+              title={link.platform}
+            >
+              <i class={link.platform} aria-hidden="true"></i>
+              <span class="copy-tooltip">Copied!</span>
+            </a>
+          ) : (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={link.label || link.platform}
+            >
+              <i class={link.platform} aria-hidden="true"></i>
+            </a>
+          )
+        )
+      ) : (
+        <span class="social-empty">No links added yet.</span>
+      )
+    }
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('a[data-copy]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const value = el.getAttribute('data-copy') || '';
+      navigator.clipboard?.writeText(value);
+      const tip = el.querySelector('.copy-tooltip');
+      if (tip) {
+        tip.classList.add('visible');
+        setTimeout(() => tip.classList.remove('visible'), 2000);
+      }
+    });
+  });
+</script>

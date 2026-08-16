@@ -1,0 +1,15 @@
+---
+interface Props {
+  href: string;
+  label: string;
+}
+
+const { href, label } = Astro.props;
+---
+
+<div class="back-link">
+  <a href={href}>
+    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+    {label.replace('← ', '')}
+  </a>
+</div>

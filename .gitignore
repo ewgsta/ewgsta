@@ -1,27 +1,25 @@
-# Logs
+# build output
+dist/
+# generated types
+.astro/
+# dependencies
+node_modules/
+# logs
 logs
 *.log
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
+bun-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# environment
+.env*
+.vercel
 
-# Editor directories and files.
+# editor
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-.vercel
-.env*

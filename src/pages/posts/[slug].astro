@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/BaseLayout.astro';
+import BackLink from '../../components/BackLink.astro';
+import Comments from '../../components/Comments.astro';
+import { getPosts } from '../../data/posts';
+import { url, getSite } from '../../data/site';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const all = await getPosts();
+  return all.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const site = await getSite();
+const { Content } = await post.render();
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description || post.data.title}
+  image={post.data.thumbnail}
+  type="article"
+>
+  <article class="content-page">
+    <BackLink href={url(`/${site.postsSlug}`)} label={site.backToPostsLabel} />
+
+    <header class="content-page-header">
+      <h1 class="post-detail-title">{post.data.title}</h1>
+      <span class="content-page-date">{post.formattedDate}</span>
+    </header>
+
+    <div class="markdown-content">
+      <Content />
+    </div>
+
+    <Comments />
+  </article>
+</Layout>

@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import PostItem from '../../components/PostItem.astro';
+import BackLink from '../../components/BackLink.astro';
+import Pagination from '../../components/Pagination.astro';
+import { getPosts, POSTS_PER_PAGE } from '../../data/posts';
+import { slicePage, totalPages } from '../../data/pagination';
+import { url, getSite } from '../../data/site';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const all = await getPosts();
+  const total = totalPages(all.length, POSTS_PER_PAGE);
+  const paths = [];
+  for (let page = 2; page <= total; page++) {
+    paths.push({ params: { page: String(page) }, props: { page } });
+  }
+  return paths;
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const [site, all] = await Promise.all([getSite(), getPosts()]);
+const slice = slicePage(all, page, POSTS_PER_PAGE);
+---
+
+<Layout
+  title={site.viewAllPostsLabel}
+  description={site.viewAllPostsLabel}
+  noIndex={page > 1}
+>
+  <section>
+    <BackLink href={url('/')} label={site.backToHomeLabel} />
+
+    <SectionHeader title={site.viewAllPostsLabel} />
+
+    <ul class="post-list">
+      {
+        slice.items.map((post) => (
+          <PostItem
+            date={post.formattedDate}
+            title={post.data.title}
+            slug={post.slug}
+          />
+        ))
+      }
+    </ul>
+
+    <Pagination
+      basePath={url(`/${site.postsSlug}`)}
+      currentPage={slice.page}
+      totalPages={slice.totalPages}
+    />
+
+    <div class="page-bottom-spacer"></div>
+  </section>
+</Layout>

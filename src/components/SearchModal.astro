@@ -1,0 +1,239 @@
+---
+import { getSite } from '../data/site';
+
+const site = await getSite();
+---
+
+<div
+  id="search-modal"
+  class="search-modal-overlay"
+  hidden
+  data-posts-slug={site.postsSlug}
+  data-projects-slug={site.projectsSlug}
+  data-posts-label={site.postsLabel}
+  data-projects-label={site.projectsLabel}
+  data-no-results={site.searchNoResults}
+>
+  <div class="search-modal-content">
+    <div class="search-input-wrapper">
+      <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+      <input
+        type="text"
+        id="search-input"
+        class="search-input"
+        placeholder={site.searchPlaceholder}
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <span class="search-badge">ESC</span>
+    </div>
+
+    <ul class="search-results-list" id="search-results"></ul>
+    <div class="search-empty-state" id="search-empty">
+      <p>{site.searchEmptyState}</p>
+    </div>
+    <div class="search-no-results" id="search-no-results" hidden></div>
+  </div>
+</div>
+
+<script>
+  interface SearchItem {
+    type: 'post' | 'project';
+    slug: string;
+    title: string;
+    description: string;
+    content: string;
+  }
+
+  interface Match {
+    item: SearchItem;
+    rank: number;
+  }
+
+  const BASE = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+  const modal = document.getElementById('search-modal');
+  const input = document.getElementById('search-input') as HTMLInputElement | null;
+  const listEl = document.getElementById('search-results');
+  const emptyEl = document.getElementById('search-empty');
+  const noResultsEl = document.getElementById('search-no-results');
+
+  const postsSlug = modal?.getAttribute('data-posts-slug') || 'posts';
+  const projectsSlug = modal?.getAttribute('data-projects-slug') || 'projects';
+  const postsLabel = modal?.getAttribute('data-posts-label') || 'Posts';
+  const projectsLabel =
+    modal?.getAttribute('data-projects-label') || 'Projects';
+  const noResultsTemplate =
+    modal?.getAttribute('data-no-results') || 'No results found for "{query}"';
+
+  let index: SearchItem[] = [];
+  let items: SearchItem[] = [];
+  let selected = 0;
+  let loaded = false;
+
+  function escapeHtml(value: string): string {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function loadIndex(): void {
+    if (loaded) return;
+    loaded = true;
+    fetch(`${BASE}/searchindex.json`)
+      .then((res) => res.json())
+      .then((data) => {
+        index = Array.isArray(data) ? (data as SearchItem[]) : [];
+      })
+      .catch(() => {});
+  }
+
+  function open(): void {
+    if (!modal || !input) return;
+    loadIndex();
+    modal.classList.remove('closing');
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    input.value = '';
+    runSearch('');
+    setTimeout(() => input.focus(), 30);
+  }
+
+  function close(): void {
+    if (!modal || modal.hidden || modal.classList.contains('closing')) return;
+    modal.classList.add('closing');
+    const finish = () => {
+      modal.classList.remove('closing');
+      modal.hidden = true;
+      input?.blur();
+      document.body.style.overflow = '';
+    };
+    modal.addEventListener(
+      'animationend',
+      (e) => {
+        if (e.target === modal) finish();
+      },
+      { once: true }
+    );
+    window.setTimeout(finish, 200);
+  }
+
+  function runSearch(query: string): void {
+    if (!listEl || !emptyEl || !noResultsEl) return;
+    const q = query.trim().toLowerCase();
+    if (!q) {
+      items = [];
+      selected = 0;
+      emptyEl.hidden = false;
+      noResultsEl.hidden = true;
+      render();
+      return;
+    }
+
+    const terms: string[] = q.split(/\s+/).filter(Boolean);
+    const matches: Match[] = [];
+    for (const item of index) {
+      const title = (item.title || '').toLowerCase();
+      const desc = (item.description || '').toLowerCase();
+      const body = (item.content || '').toLowerCase();
+      if (terms.every((t: string) => title.includes(t) || desc.includes(t) || body.includes(t))) {
+        let rank = 1;
+        if (terms.every((t: string) => title.includes(t))) rank = 0;
+        else if (terms.every((t: string) => desc.includes(t))) rank = 0.5;
+        matches.push({ item, rank });
+      }
+    }
+
+    matches.sort((a, b) => {
+      if (a.rank !== b.rank) return a.rank - b.rank;
+      return a.item.title.localeCompare(b.item.title);
+    });
+
+    items = matches.slice(0, 5).map((m) => m.item);
+    selected = 0;
+    emptyEl.hidden = true;
+    noResultsEl.hidden = items.length > 0;
+    noResultsEl.textContent = noResultsTemplate.replace('{query}', query);
+    render();
+  }
+
+  function render(): void {
+    if (!listEl) return;
+    listEl.innerHTML = '';
+    items.forEach((item, i) => {
+      const li = document.createElement('li');
+      li.className =
+        'search-result-item' + (i === selected ? ' selected' : '');
+      li.innerHTML =
+        '<div class="result-icon">' +
+        `<i class="${
+          item.type === 'post' ? 'fa-solid fa-file-lines' : 'fa-solid fa-code'
+        }" aria-hidden="true"></i>` +
+        '</div>' +
+        '<div class="result-info">' +
+        `<div class="result-title">${escapeHtml(item.title)}` +
+        `<span class="result-type-badge">${
+          item.type === 'post' ? postsLabel : projectsLabel
+        }</span></div>` +
+        (item.description
+          ? `<div class="result-desc">${escapeHtml(item.description)}</div>`
+          : '') +
+        '</div>' +
+        (i === selected
+          ? '<i class="fa-solid fa-arrow-right result-enter-icon" aria-hidden="true"></i>'
+          : '');
+      li.addEventListener('click', () => select(i));
+      li.addEventListener('mouseenter', () => setSelected(i));
+      listEl.appendChild(li);
+    });
+  }
+
+  function setSelected(i: number): void {
+    if (i < 0 || i >= items.length) return;
+    selected = i;
+    render();
+  }
+
+  function select(i: number): void {
+    const item = items[i];
+    if (!item) return;
+    close();
+    const slug = item.type === 'post' ? postsSlug : projectsSlug;
+    window.location.href = `${BASE}/${slug}/${item.slug}`;
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (modal?.hidden) open();
+      else close();
+      return;
+    }
+    if (modal?.hidden) return;
+    if (e.key === 'Escape') {
+      close();
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSelected((selected + 1) % Math.max(1, items.length));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setSelected(
+        (selected - 1 + Math.max(1, items.length)) % Math.max(1, items.length)
+      );
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      select(selected);
+    }
+  });
+
+  window.addEventListener('search:open', open);
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) close();
+  });
+
+  input?.addEventListener('input', () => runSearch(input.value));
+  runSearch('');
+</script>

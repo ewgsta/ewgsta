@@ -1,0 +1,63 @@
+---
+import { url, getSite } from '../data/site';
+
+interface Props {
+  name: string;
+  desc: string;
+  link: string;
+  slug?: string;
+  showReadMore?: boolean;
+}
+
+const { name, desc, link, slug, showReadMore } = Astro.props;
+const site = await getSite();
+const detailHref = slug ? url(`/${site.projectsSlug}/${slug}`) : null;
+---
+
+<li class="project-item" data-href={detailHref}>
+  <div class="project-row">
+    {
+      detailHref ? (
+        <a href={detailHref} class="project-name">
+          {name}
+        </a>
+      ) : (
+        <a
+          href={link || '#'}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-name"
+        >
+          {name}
+        </a>
+      )
+    }
+    <span class="project-desc">
+      {desc}
+      {
+        detailHref && showReadMore && (
+          <a
+            href={detailHref}
+            class="project-readmore"
+            aria-label={`${name} details`}
+          >
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        )
+      }
+    </span>
+  </div>
+</li>
+
+<script>
+  document
+    .querySelectorAll<HTMLElement>('.project-item[data-href]')
+    .forEach((item) => {
+      const href = item.getAttribute('data-href');
+      if (!href) return;
+      item.addEventListener('click', (e) => {
+        if ((e.target as Element | null)?.closest('a')) return;
+        window.location.href = href;
+      });
+    });
+</script>

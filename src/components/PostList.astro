@@ -1,0 +1,27 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import PostItem from './PostItem.astro';
+import { url, getSite } from '../data/site';
+
+interface Props {
+  posts: Array<{ date: string; title: string; slug: string }>;
+}
+
+const { posts } = Astro.props;
+const site = await getSite();
+---
+
+<section>
+  <SectionHeader title={site.postsLabel} />
+  <ul class="post-list">
+    {
+      posts.map((post) => (
+        <PostItem date={post.date} title={post.title} slug={post.slug} />
+      ))
+    }
+  </ul>
+  <a href={url(`/${site.postsSlug}`)} class="read-more-link">
+    {site.readMoreLabel}
+    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+  </a>
+</section>

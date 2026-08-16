@@ -1,0 +1,25 @@
+---
+import { url, getSite } from '../data/site';
+
+interface Props {
+  date: string;
+  title: string;
+  slug?: string;
+}
+
+const { date, title, slug } = Astro.props;
+const site = await getSite();
+---
+
+<li class="post-item">
+  <span class="post-date">{date}</span>
+  {
+    slug ? (
+      <a href={url(`/${site.postsSlug}/${slug}`)} class="post-title">
+        {title}
+      </a>
+    ) : (
+      <span class="post-title">{title}</span>
+    )
+  }
+</li>

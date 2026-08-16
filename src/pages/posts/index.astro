@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/BaseLayout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import PostItem from '../../components/PostItem.astro';
+import BackLink from '../../components/BackLink.astro';
+import Pagination from '../../components/Pagination.astro';
+import { getPosts, POSTS_PER_PAGE } from '../../data/posts';
+import { slicePage } from '../../data/pagination';
+import { url, getSite } from '../../data/site';
+
+const [site, all] = await Promise.all([getSite(), getPosts()]);
+const slice = slicePage(all, 1, POSTS_PER_PAGE);
+---
+
+<Layout title={site.viewAllPostsLabel} description={site.viewAllPostsLabel}>
+  <section>
+    <BackLink href={url('/')} label={site.backToHomeLabel} />
+
+    <SectionHeader title={site.viewAllPostsLabel} />
+
+    <ul class="post-list">
+      {
+        slice.items.map((post) => (
+          <PostItem
+            date={post.formattedDate}
+            title={post.data.title}
+            slug={post.slug}
+          />
+        ))
+      }
+    </ul>
+
+    <Pagination
+      basePath={url(`/${site.postsSlug}`)}
+      currentPage={1}
+      totalPages={slice.totalPages}
+    />
+
+    <div class="page-bottom-spacer"></div>
+  </section>
+</Layout>

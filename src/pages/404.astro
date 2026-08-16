@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import { url } from '../data/site';
+---
+
+<Layout title="404" noIndex>
+  <section style="padding: 40px 0;">
+    <h1 class="post-detail-title">404</h1>
+    <p class="quote-text">Page not found.</p>
+    <a href={url('/')} class="read-more-link">
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+      Back to Home
+    </a>
+  </section>
+</Layout>

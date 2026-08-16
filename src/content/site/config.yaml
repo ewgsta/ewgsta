@@ -8,11 +8,11 @@ siteAuthor: Furkan
 siteKeywords: >-
   full stack, developer, software engineer, web development, frontend, backend,
   programming, coding, blog, portfolio, software, javascript, typescript, react,
-  nodejs
+  nodejs, rust, go, ruby
 ogImage: https://github.com/ewgsta.png
 logoUrl: https://github.com/ewgsta.png
 logoText: ''
-footerText: ''
+footerText: '© 2026 Furkan (ewgsta). All rights reserved.'
 heroTitle: Furkan :3
 quoteText: Full-stack Developer
 findMeOnLabel: Find me on
@@ -27,6 +27,7 @@ searchNoResults: 'No results were found: "{query}".'
 searchEmptyState: Type to search
 backToHomeLabel: ← Back to Home
 backToProjectsLabel: ← Back to Projects
+mail: hello@ewgsta.me
 links:
   - platform: fa-brands fa-github
     url: https://github.com/ewgsta
@@ -34,5 +35,3 @@ links:
     url: https://bsky.app/profile/ewgsta.bsky.social
   - platform: fa-solid fa-envelope
     url: '#'
-    isCopyable: true
-    copyValue: hello@ewgsta.me

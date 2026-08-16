@@ -1,0 +1,57 @@
+---
+import { url, getSite } from '../data/site';
+
+const site = await getSite();
+---
+
+<header>
+  <div class="brand-group">
+    <div class="logo-img">
+      <a href={url('/')}>
+        <img src={site.logoUrl} alt="Logo" />
+      </a>
+    </div>
+    <div class="brand-info">
+      <h1>{site.logoText}</h1>
+    </div>
+  </div>
+
+  <div class="header-icons">
+    <button type="button" id="search-btn" aria-label="Search">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+    </button>
+    <button type="button" id="theme-toggle" aria-label="Toggle theme">
+      <i id="theme-icon" class="fa-regular fa-moon" aria-hidden="true"></i>
+    </button>
+  </div>
+</header>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const icon = document.getElementById('theme-icon');
+  const searchBtn = document.getElementById('search-btn');
+
+  function currentTheme() {
+    return root.getAttribute('data-theme') || 'dark';
+  }
+
+  function applyIcon() {
+    if (!icon) return;
+    icon.className =
+      currentTheme() === 'dark' ? 'fa-regular fa-moon' : 'fa-regular fa-sun';
+  }
+
+  toggle?.addEventListener('click', () => {
+    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    applyIcon();
+  });
+
+  searchBtn?.addEventListener('click', () => {
+    window.dispatchEvent(new CustomEvent('search:open'));
+  });
+
+  applyIcon();
+</script>

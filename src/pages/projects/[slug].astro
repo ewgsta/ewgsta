@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/BaseLayout.astro';
+import BackLink from '../../components/BackLink.astro';
+import Comments from '../../components/Comments.astro';
+import { getProjects } from '../../data/projects';
+import { url, getSite } from '../../data/site';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const all = await getProjects();
+  return all.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}) satisfies GetStaticPaths;
+
+const { project } = Astro.props;
+const site = await getSite();
+const { Content } = await project.render();
+---
+
+<Layout
+  title={project.data.title}
+  description={project.data.description || project.data.title}
+>
+  <article class="content-page">
+    <BackLink
+      href={url(`/${site.projectsSlug}`)}
+      label={site.backToProjectsLabel}
+    />
+
+    <h1 class="post-detail-title">{project.data.title}</h1>
+
+    <div class="content-page-meta">
+      {
+        project.data.tech.length > 0 && (
+          <div class="tech-badges">
+            {
+              project.data.tech.map((tech) => (
+                <span class="tech-badge">{tech}</span>
+              ))
+            }
+          </div>
+        )
+      }
+
+      {
+        project.data.link && project.data.link !== '#' && (
+          <a
+            href={project.data.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-visit"
+          >
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+            View on Github
+          </a>
+        )
+      }
+    </div>
+
+    <div class="markdown-content">
+      <Content />
+    </div>
+  </article>
+  <Comments />
+</Layout>
