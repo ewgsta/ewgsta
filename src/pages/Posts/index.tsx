@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ArrowLeft } from 'lucide-react';
 import SectionHeader from '../../components/SectionHeader';
 import PostItem from '../../components/PostItem';
 import { posts } from '../../data/posts';
@@ -25,8 +26,21 @@ const Posts = () => {
                 description={`Tüm ${postsLabel.toLowerCase()} listesi`}
             />
             <section>
-                <div style={{ marginBottom: '30px' }}>
-                    <Link to="/" style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{backToHomeLabel}</Link>
+                <div style={{ marginBottom: '32px' }}>
+                    <Link
+                        to="/"
+                        style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            fontSize: '0.875rem',
+                            color: 'var(--muted-foreground)',
+                            transition: 'color 0.15s ease',
+                        }}
+                    >
+                        <ArrowLeft size={14} />
+                        {backToHomeLabel.replace('← ', '')}
+                    </Link>
                 </div>
 
                 <SectionHeader title={viewAllPostsLabel} />
@@ -42,18 +56,22 @@ const Posts = () => {
                 </ul>
 
                 {totalPages > 1 && (
-                    <div style={{ display: 'flex', gap: '10px', marginTop: '20px', fontSize: '0.9rem' }}>
+                    <div style={{ display: 'flex', gap: '2px', marginTop: '24px' }}>
                         {Array.from({ length: totalPages }, (_, i) => (
                             <button
                                 key={i + 1}
                                 onClick={() => paginate(i + 1)}
                                 style={{
-                                    background: 'none',
+                                    background: currentPage === i + 1 ? 'var(--secondary)' : 'transparent',
                                     border: 'none',
-                                    color: currentPage === i + 1 ? '#fff' : 'var(--text-muted)',
+                                    color: currentPage === i + 1 ? 'var(--foreground)' : 'var(--muted-foreground)',
                                     cursor: 'pointer',
-                                    textDecoration: currentPage === i + 1 ? 'underline' : 'none',
-                                    padding: '5px'
+                                    padding: '6px 12px',
+                                    borderRadius: 'var(--radius)',
+                                    fontSize: '0.85rem',
+                                    fontWeight: currentPage === i + 1 ? 500 : 400,
+                                    fontFamily: 'var(--font-mono)',
+                                    transition: 'all 0.15s ease',
                                 }}
                             >
                                 {i + 1}

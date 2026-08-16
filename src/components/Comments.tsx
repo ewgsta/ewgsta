@@ -31,7 +31,7 @@ const Comments = () => {
     }, []);
 
     return (
-        <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px dashed #333' }}>
+        <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--border)' }}>
             <div id="giscus"></div>
         </div>
     );

@@ -14,7 +14,7 @@ const PostItem = ({ date, title, slug }: PostItemProps) => {
             {slug ? (
                 <Link to={`/${postsSlug}/${slug}`} className="post-title">{title}</Link>
             ) : (
-                <a href="#" className="post-title">{title}</a>
+                <span className="post-title">{title}</span>
             )}
         </li>
     );

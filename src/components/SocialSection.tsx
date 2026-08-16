@@ -13,7 +13,14 @@ const SocialSection = () => {
 
     return (
         <section>
-            <h2 className="section-header">{heroTitle}</h2>
+            <h2 style={{
+                fontSize: '1.5rem',
+                fontWeight: 700,
+                color: 'var(--foreground)',
+                letterSpacing: '-0.03em',
+                marginBottom: '12px',
+                lineHeight: 1.3,
+            }}>{heroTitle}</h2>
             <p className="quote-text">{quoteText}</p>
 
             <div className="social-row">
@@ -33,17 +40,20 @@ const SocialSection = () => {
                                     {copiedText === (link.copyValue || link.url) && (
                                         <span style={{
                                             position: 'absolute',
-                                            top: '-25px',
+                                            top: '-30px',
                                             left: '50%',
                                             transform: 'translateX(-50%)',
-                                            fontSize: '12px',
-                                            background: 'var(--surface)',
-                                            padding: '2px 6px',
-                                            borderRadius: '4px',
-                                            color: 'var(--text)',
+                                            fontSize: '0.7rem',
+                                            background: 'var(--secondary)',
+                                            border: '1px solid var(--border)',
+                                            padding: '3px 8px',
+                                            borderRadius: 'var(--radius)',
+                                            color: 'var(--foreground)',
                                             whiteSpace: 'nowrap',
                                             pointerEvents: 'none',
-                                            zIndex: 10
+                                            zIndex: 10,
+                                            fontFamily: 'var(--font-mono)',
+                                            fontWeight: 500,
                                         }}>
                                             Copied!
                                         </span>
@@ -58,7 +68,7 @@ const SocialSection = () => {
                         );
                     })
                 ) : (
-                    <span style={{ color: 'var(--text-muted)' }}>No links added yet.</span>
+                    <span style={{ color: 'var(--muted-foreground)', fontSize: '0.875rem' }}>No links added yet.</span>
                 )}
             </div>
         </section>

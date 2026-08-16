@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { projectsSlug } from '../data/siteData';
 
 interface ProjectItemProps {
@@ -19,8 +20,18 @@ const ProjectItem = ({ name, desc, link, slug, showReadMore }: ProjectItemProps)
                     {showReadMore && slug && (
                         <>
                             {' '}
-                            <Link to={`/${projectsSlug}/${slug}`} style={{ fontSize: '0.9em', color: 'var(--text-muted)', textDecoration: 'underline', whiteSpace: 'nowrap' }}>
-                                →
+                            <Link
+                                to={`/${projectsSlug}/${slug}`}
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '2px',
+                                    fontSize: '0.8em',
+                                    color: 'var(--muted-foreground)',
+                                    transition: 'color 0.15s ease'
+                                }}
+                            >
+                                <ArrowRight size={12} />
                             </Link>
                         </>
                     )}

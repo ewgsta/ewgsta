@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import Fuse from 'fuse.js';
 import { useNavigate } from 'react-router-dom';
+import { Search, FileText, Code, ArrowRight } from 'lucide-react';
 import { getAllSearchableContent } from '../utils/searchData';
 import { useSearch } from '../context/SearchContext';
 import { searchPlaceholder, searchNoResults, searchEmptyState, postsLabel, projectsLabel, postsSlug, projectsSlug } from '../data/siteData';
@@ -94,7 +95,7 @@ export default function SearchModal() {
         <div className="search-modal-overlay" onClick={closeSearch}>
             <div className="search-modal-content" onClick={e => e.stopPropagation()}>
                 <div className="search-input-wrapper">
-                    <i className="fa-solid fa-magnifying-glass search-icon"></i>
+                    <Search size={16} className="search-icon" />
                     <input
                         ref={inputRef}
                         type="text"
@@ -116,7 +117,7 @@ export default function SearchModal() {
                                 onMouseEnter={() => setSelectedIndex(index)}
                             >
                                 <div className="result-icon">
-                                    <i className={`fa-solid ${item.type === 'post' ? 'fa-file-lines' : 'fa-code'}`}></i>
+                                    {item.type === 'post' ? <FileText size={14} /> : <Code size={14} />}
                                 </div>
                                 <div className="result-info">
                                     <div className="result-title">
@@ -125,7 +126,7 @@ export default function SearchModal() {
                                     </div>
                                     {item.description && <div className="result-desc">{item.description}</div>}
                                 </div>
-                                {index === selectedIndex && <i className="fa-solid fa-arrow-right result-enter-icon"></i>}
+                                {index === selectedIndex && <ArrowRight size={14} className="result-enter-icon" />}
                             </li>
                         ))}
                     </ul>

@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
+import { ArrowLeft, ExternalLink } from 'lucide-react';
 import 'highlight.js/styles/github-dark.css';
 import { getProjects } from '../../utils/content';
 import { projectsSlug, backToProjectsLabel } from '../../data/siteData';
@@ -34,7 +35,7 @@ const ProjectDetail = () => {
         loadProject();
     }, [slug]);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div style={{ padding: '40px 0', color: 'var(--muted-foreground)', fontSize: '0.875rem' }}>Loading...</div>;
 
     if (!project) {
         return (
@@ -52,30 +53,61 @@ const ProjectDetail = () => {
                 description={project.desc || project.name}
             />
             <article className="post-detail-container">
-                <div style={{ marginBottom: '30px' }}>
-                    <Link to={`/${projectsSlug}`} style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{backToProjectsLabel}</Link>
+                <div style={{ marginBottom: '32px' }}>
+                    <Link
+                        to={`/${projectsSlug}`}
+                        style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            fontSize: '0.875rem',
+                            color: 'var(--muted-foreground)',
+                            transition: 'color 0.15s ease',
+                        }}
+                    >
+                        <ArrowLeft size={14} />
+                        {backToProjectsLabel.replace('← ', '')}
+                    </Link>
                 </div>
 
                 <h1 className="post-detail-title">{project.name}</h1>
 
-                <div className="project-meta" style={{ marginBottom: '20px', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+                <div style={{ marginBottom: '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     {project.tech && project.tech.length > 0 && (
-                        <div className="tech-stack" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                             {project.tech.map((t, i) => (
-                                <span key={i} className="tech-badge" style={{
-                                    background: 'rgba(255,255,255,0.1)',
-                                    padding: '2px 8px',
-                                    borderRadius: '4px',
-                                    fontSize: '0.8rem'
+                                <span key={i} style={{
+                                    background: 'var(--secondary)',
+                                    color: 'var(--muted-foreground)',
+                                    padding: '2px 10px',
+                                    borderRadius: 'calc(var(--radius) * 3)',
+                                    fontSize: '0.75rem',
+                                    fontWeight: 500,
+                                    fontFamily: 'var(--font-mono)',
                                 }}>{t}</span>
                             ))}
                         </div>
                     )}
 
                     {project.link && (
-                        <div style={{ marginTop: '10px' }}>
-                            <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', color: 'var(--accent-pink)' }}>
-                                Visit Project <i className="fa-solid fa-arrow-up-right-from-square" style={{ fontSize: '0.8rem' }}></i>
+                        <div>
+                            <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '6px',
+                                    fontSize: '0.875rem',
+                                    color: 'var(--muted-foreground)',
+                                    transition: 'color 0.15s ease',
+                                    borderBottom: '1px solid var(--border)',
+                                    paddingBottom: '1px',
+                                }}
+                            >
+                                Visit Project
+                                <ExternalLink size={13} />
                             </a>
                         </div>
                     )}

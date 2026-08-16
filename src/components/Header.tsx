@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Search, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useSearch } from '../context/SearchContext';
 import { logoUrl, logoText } from '../data/siteData';
@@ -21,12 +22,12 @@ const Header = () => {
             </div>
 
             <div className="header-icons">
-                <i className="fa-solid fa-magnifying-glass" onClick={openSearch} style={{ cursor: 'pointer' }}></i>
-                <i
-                    className={`fa-solid ${theme === 'dark' ? 'fa-moon' : 'fa-sun'}`}
-                    onClick={toggleTheme}
-                    style={{ cursor: 'pointer' }}
-                ></i>
+                <button onClick={openSearch} aria-label="Search">
+                    <Search size={16} />
+                </button>
+                <button onClick={toggleTheme} aria-label="Toggle theme">
+                    {theme === 'dark' ? <Moon size={16} /> : <Sun size={16} />}
+                </button>
             </div>
         </header>
     );
