@@ -96,10 +96,10 @@
       <td colspan="3"><small>This does not include all of my projects. Visit my <a href="https://ewgsta.me">personal website</a> to see them all.</small></td>
     </tr>
     <tr>
-      <td colspan="3"><small>To monitor uptime status for published projects, <a href="https://ewgsta.me">visit this page.</a></small></td>
+      <td colspan="3"><small>To monitor uptime status for published projects, <a href="https://status.ewgsta.me">visit this page.</a></small></td>
     </tr>
     <tr>
-      <td colspan="3"><small>To access the documentation for published projects, <a href="https://ewgsta.me">visit this page.</a></small></td>
+      <td colspan="3"><small>To access the documentation for published projects, <a href="https://docs.ewgsta.me">visit this page.</a></small></td>
     </tr>
   </tbody>
 </table>
