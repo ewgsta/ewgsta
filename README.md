@@ -98,6 +98,9 @@
     <tr>
       <td colspan="3"><small>To monitor uptime status for published projects, <a href="https://ewgsta.me">visit this page.</a></small></td>
     </tr>
+    <tr>
+      <td colspan="3"><small>To access the documentation for published projects, <a href="https://ewgsta.me">visit this page.</a></small></td>
+    </tr>
   </tbody>
 </table>
 
