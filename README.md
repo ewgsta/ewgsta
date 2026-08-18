@@ -5,21 +5,21 @@
       <td width="160"><b>Languages</b></td>
       <td>
         <code>TypeScript</code> <code>JavaScript</code> <code>Python</code> 
-        <code>Go</code> <code>Rust</code> <code>Ruby</code>
+        <code>Go</code>
       </td>
     </tr>
     <tr>
       <td><b>Frontend</b></td>
       <td>
-        <code>React</code> <code>Next.js</code> <code>SvelteKit</code> 
-        <code>Nuxt</code> <code>Tailwind CSS</code>
+        <code>Next.js</code> <code>SvelteKit</code> <code>React</code>  
+        <code>Shadcn</code> <code>Tailwind CSS</code>
       </td>
     </tr>
     <tr>
       <td><b>Backend</b></td>
       <td>
-        <code>Node.js</code> <code>SQL</code> <code>PostgreSQL</code> 
-        <code>MongoDB</code> <code>Drizzle ORM</code>
+        <code>Node.js</code> <code>PostgreSQL</code> <code>MongoDB</code>
+        <code>SQL</code> <code>Drizzle ORM</code>
       </td>
     </tr>
     <tr>
@@ -27,6 +27,13 @@
       <td>
         <code>Docker</code> <code>Nginx</code> <code>Caddy</code> 
         <code>Cloudflare</code> <code>Bruno</code> <code>Git</code>
+      </td>
+    </tr>
+    <tr>
+      <td width="160"><b>Currently learning</b></td>
+      <td>
+        <code>Astro</code> <code>K8s</code> <code>Rust</code>
+        <code>Ruby</code> 
       </td>
     </tr>
   </tbody>
