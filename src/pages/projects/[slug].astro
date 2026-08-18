@@ -3,6 +3,7 @@ import Layout from '../../layouts/BaseLayout.astro';
 import BackLink from '../../components/BackLink.astro';
 import Comments from '../../components/Comments.astro';
 import { getProjects } from '../../data/projects';
+import { render } from 'astro:content';
 import { url, getSite } from '../../data/site';
 import type { GetStaticPaths } from 'astro';
 
@@ -16,7 +17,7 @@ export const getStaticPaths = (async () => {
 
 const { project } = Astro.props;
 const site = await getSite();
-const { Content } = await project.render();
+const { Content } = await render(project);
 ---
 
 <Layout

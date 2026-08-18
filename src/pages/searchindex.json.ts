@@ -11,14 +11,14 @@ export const GET: APIRoute = async () => {
       slug: post.slug,
       title: post.data.title,
       description: post.data.description,
-      content: post.body.slice(0, 2000),
+      content: (post.body ?? '').slice(0, 2000),
     })),
     ...projects.map((project) => ({
       type: 'project',
       slug: project.slug,
       title: project.data.title,
       description: project.data.description,
-      content: project.body.slice(0, 2000),
+      content: (project.body ?? '').slice(0, 2000),
     })),
   ];
 
