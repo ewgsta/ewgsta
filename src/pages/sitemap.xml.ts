@@ -1,8 +1,14 @@
 import type { APIRoute } from 'astro';
-import { getPosts, POSTS_PER_PAGE } from '../data/posts';
+import { getPosts } from '../data/posts';
 import { getProjects } from '../data/projects';
 import { getSite, url } from '../data/site';
-import { totalPages } from '../data/pagination';
+
+interface SitemapEntry {
+  loc: string;
+  lastmod: string;
+  changefreq: string;
+  priority: string;
+}
 
 export const GET: APIRoute = async () => {
   const [site, posts, projects] = await Promise.all([
@@ -14,25 +20,40 @@ export const GET: APIRoute = async () => {
   const base = site.siteUrl.replace(/\/$/, '');
   const absUrl = (path: string) =>
     `${base}${url(path)}${path === '/' ? '' : '/'}`;
+  const now = new Date().toISOString();
 
-  const locs: string[] = [
-    absUrl('/'),
-    absUrl(`/${site.projectsSlug}`),
-    ...projects.map((p) => absUrl(`/${site.projectsSlug}/${p.slug}`)),
-    absUrl(`/${site.postsSlug}`),
-    ...posts.map((p) => absUrl(`/${site.postsSlug}/${p.slug}`)),
+  const entries: SitemapEntry[] = [
+    { loc: absUrl('/'), lastmod: now, changefreq: 'weekly', priority: '1.0' },
+    {
+      loc: absUrl(`/${site.projectsSlug}`),
+      lastmod: now,
+      changefreq: 'weekly',
+      priority: '0.9',
+    },
+    ...projects.map((project) => ({
+      loc: absUrl(`/${site.projectsSlug}/${project.slug}`),
+      lastmod: now,
+      changefreq: 'yearly',
+      priority: '0.7',
+    })),
+    {
+      loc: absUrl(`/${site.postsSlug}`),
+      lastmod: now,
+      changefreq: 'weekly',
+      priority: '0.9',
+    },
+    ...posts.map((post) => ({
+      loc: absUrl(`/${site.postsSlug}/${post.slug}`),
+      lastmod: post.data.date.toISOString(),
+      changefreq: 'monthly',
+      priority: '0.7',
+    })),
   ];
 
-  const pages = totalPages(posts.length, POSTS_PER_PAGE);
-  for (let i = 2; i <= pages; i++) {
-    locs.push(absUrl(`/${site.postsSlug}/page/${i}`));
-  }
-
-  const now = new Date().toISOString();
-  const items = locs
+  const items = entries
     .map(
-      (loc) =>
-        `<url><loc>${loc}</loc><lastmod>${now}</lastmod><changefreq>weekly</changefreq></url>`
+      (e) =>
+        `<url><loc>${e.loc}</loc><lastmod>${e.lastmod}</lastmod><changefreq>${e.changefreq}</changefreq><priority>${e.priority}</priority></url>`
     )
     .join('');
 

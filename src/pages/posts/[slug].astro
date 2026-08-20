@@ -22,9 +22,14 @@ const { Content } = await render(post);
 
 <Layout
   title={post.data.title}
-  description={post.data.description || post.data.title}
+  description={post.data.description}
+  body={post.body}
   image={post.data.thumbnail}
   type="article"
+  publishedTime={post.data.date}
+  modifiedTime={post.data.date}
+  author={site.siteAuthor}
+  breadcrumb={[{ name: site.viewAllPostsLabel, path: `/${site.postsSlug}` }]}
 >
   <article class="content-page">
     <BackLink href={url(`/${site.postsSlug}`)} label={site.backToPostsLabel} />

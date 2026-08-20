@@ -2,31 +2,130 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SearchModal from '../components/SearchModal.astro';
-import { getSite } from '../data/site';
+import { getSite, url } from '../data/site';
+import { buildDescription, toISODate } from '../utils/seo';
+import type { BreadcrumbItem } from '../utils/seo';
 import '../styles/global.css';
 
 interface Props {
   title?: string;
   description?: string;
+  body?: string;
   image?: string | null;
   type?: string;
   noIndex?: boolean;
+  publishedTime?: Date | string;
+  modifiedTime?: Date | string;
+  author?: string;
+  breadcrumb?: BreadcrumbItem[];
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   title,
   description,
+  body,
   image,
   type = 'website',
   noIndex = false,
+  publishedTime,
+  modifiedTime,
+  author,
+  breadcrumb,
+  jsonLd,
 } = Astro.props;
 
 const site = await getSite();
 const pageTitle = title ? `${title} | ${site.siteTitle}` : site.siteTitle;
-const pageDescription = description || site.siteDescription;
+const pageDescription =
+  description && description.trim()
+    ? description.trim()
+    : body
+      ? buildDescription(body, site.siteDescription)
+      : site.siteDescription;
 const pageImage = image || site.ogImage || site.logoUrl;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? site.siteUrl);
+const canonicalHref = canonicalURL.toString();
 const ogLocale = site.siteLanguage === 'tr' ? 'tr_TR' : 'en_US';
+const siteBase = (site.siteUrl ?? '').replace(/\/$/, '');
+const personId = `${siteBase}/#person`;
+const websiteId = `${siteBase}/#website`;
+
+const published = toISODate(publishedTime);
+const modified = toISODate(modifiedTime) || published;
+const authorName = author || site.siteAuthor;
+
+/* ---------------------------------------------------------------- */
+/* Structured data (JSON-LD)                                          */
+/* ---------------------------------------------------------------- */
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    url: `${siteBase}/`,
+    name: site.siteTitle,
+    description: site.siteDescription,
+    inLanguage: site.siteLanguage,
+    publisher: { '@id': personId },
+  },
+  {
+    '@type': 'Person',
+    '@id': personId,
+    name: authorName,
+    url: `${siteBase}/`,
+    image: site.logoUrl,
+  },
+  {
+    '@type': 'WebPage',
+    '@id': `${canonicalHref}#webpage`,
+    url: canonicalHref,
+    name: pageTitle,
+    description: pageDescription,
+    isPartOf: { '@id': websiteId },
+    inLanguage: site.siteLanguage,
+  },
+];
+
+if (type === 'article') {
+  graph.push({
+    '@type': 'Article',
+    '@id': `${canonicalHref}#article`,
+    headline: title || pageTitle,
+    description: pageDescription,
+    image: pageImage,
+    author: { '@id': personId },
+    publisher: { '@id': personId },
+    mainEntityOfPage: { '@id': `${canonicalHref}#webpage` },
+    datePublished: published || undefined,
+    dateModified: modified || undefined,
+    inLanguage: site.siteLanguage,
+  });
+}
+
+if (breadcrumb && breadcrumb.length) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: [{ name: site.siteTitle, path: '/' }, ...breadcrumb].map(
+      (crumb, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: crumb.name,
+        item: new URL(url(crumb.path), siteBase).toString(),
+      })
+    ),
+  });
+}
+
+const extraJsonLd = jsonLd
+  ? Array.isArray(jsonLd)
+    ? jsonLd
+    : [jsonLd]
+  : [];
+
+const jsonLdMarkup = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [...graph, ...extraJsonLd],
+});
 ---
 
 <!doctype html>
@@ -63,9 +162,18 @@ const ogLocale = site.siteLanguage === 'tr' ? 'tr_TR' : 'en_US';
     <meta name="title" content={pageTitle} />
     <meta name="description" content={pageDescription} />
     {site.siteKeywords && <meta name="keywords" content={site.siteKeywords} />}
-    <meta name="author" content={site.siteAuthor} />
-    <link rel="canonical" href={canonicalURL} />
-    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="author" content={authorName} />
+    <link rel="canonical" href={canonicalHref} />
+    {
+      noIndex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : (
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
+      )
+    }
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href={site.logoUrl} />
@@ -73,19 +181,31 @@ const ogLocale = site.siteLanguage === 'tr' ? 'tr_TR' : 'en_US';
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={type} />
-    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:url" content={canonicalHref} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:image" content={pageImage} />
+    <meta property="og:image:alt" content={pageTitle} />
     <meta property="og:site_name" content={site.siteTitle} />
     <meta property="og:locale" content={ogLocale} />
+    {type === 'article' && (
+      <>
+        {published && <meta property="article:published_time" content={published} />}
+        {modified && <meta property="article:modified_time" content={modified} />}
+        <meta property="article:author" content={authorName} />
+      </>
+    )}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:url" content={canonicalHref} />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={pageImage} />
+    <meta name="twitter:image:alt" content={pageTitle} />
+
+    <!-- Structured Data -->
+    <script is:inline type="application/ld+json" set:html={jsonLdMarkup} />
 
     <!-- Additional SEO -->
     <meta name="theme-color" content="#121212" />

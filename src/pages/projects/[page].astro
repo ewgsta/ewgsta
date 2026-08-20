@@ -7,6 +7,7 @@ import Pagination from '../../components/Pagination.astro';
 import { getProjects, PROJECTS_PER_PAGE } from '../../data/projects';
 import { slicePage, totalPages } from '../../data/pagination';
 import { url, getSite } from '../../data/site';
+import { listDescription } from '../../utils/seo';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths = (async () => {
@@ -22,17 +23,37 @@ export const getStaticPaths = (async () => {
 const { page } = Astro.props;
 const [site, all] = await Promise.all([getSite(), getProjects()]);
 const slice = slicePage(all, page, PROJECTS_PER_PAGE);
+const itemListJsonLd = {
+  '@type': 'ItemList',
+  name: `${site.viewAllProjectsLabel} - Page ${page}`,
+  itemListElement: slice.items.map((project, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: new URL(
+      url(`/${site.projectsSlug}/${project.slug}`),
+      site.siteUrl
+    ).toString(),
+  })),
+};
 ---
 
 <Layout
   title={site.viewAllProjectsLabel}
-  description={site.viewAllProjectsLabel}
+  description={listDescription(
+    site.viewAllProjectsLabel,
+    site.siteTitle,
+    all.map((p) => p.data.title)
+  )}
   noIndex={page > 1}
+  breadcrumb={[
+    { name: site.viewAllProjectsLabel, path: `/${site.projectsSlug}` },
+  ]}
+  jsonLd={itemListJsonLd}
 >
   <section>
     <BackLink href={url('/')} label={site.backToHomeLabel} />
 
-    <SectionHeader title={site.viewAllProjectsLabel} />
+    <SectionHeader title={site.viewAllProjectsLabel} level="h1" />
 
     <ul class="project-list">
       {

@@ -22,7 +22,9 @@ const { Content } = await render(project);
 
 <Layout
   title={project.data.title}
-  description={project.data.description || project.data.title}
+  description={project.data.description}
+  body={project.body}
+  breadcrumb={[{ name: site.viewAllProjectsLabel, path: `/${site.projectsSlug}` }]}
 >
   <article class="content-page">
     <BackLink

@@ -8,11 +8,11 @@ const site = await getSite();
   <div class="brand-group">
     <div class="logo-img">
       <a href={url('/')}>
-        <img src={site.logoUrl} alt="Logo" />
+        <img src={site.logoUrl} alt={site.siteTitle} />
       </a>
     </div>
     <div class="brand-info">
-      <h1>{site.logoText}</h1>
+      {site.logoText && <span class="brand-name">{site.logoText}</span>}
     </div>
   </div>
 

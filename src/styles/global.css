@@ -180,7 +180,7 @@ header {
   border: 1px solid var(--border);
 }
 
-.brand-info h1 {
+.brand-info .brand-name {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--foreground);
@@ -258,7 +258,7 @@ header {
    Section Headers
    ======================================== */
 
-h2.section-header {
+.section-header {
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--muted-foreground);
