@@ -135,6 +135,15 @@ const jsonLdMarkup = JSON.stringify({
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
+    <!-- Avatar Preload (LCP) -->
+    <link
+      rel="preload"
+      as="image"
+      href={url('/avatar.webp')}
+      imagesrcset={`${url('/avatar-80.webp')} 1x, ${url('/avatar.webp')} 2x`}
+      fetchpriority="high"
+    />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

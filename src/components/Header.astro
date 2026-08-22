@@ -8,7 +8,16 @@ const site = await getSite();
   <div class="brand-group">
     <div class="logo-img">
       <a href={url('/')}>
-        <img src={site.logoUrl} alt={site.siteTitle} />
+        <img
+          src={url('/avatar.webp')}
+          srcset={`${url('/avatar-80.webp')} 1x, ${url('/avatar.webp')} 2x`}
+          alt={site.siteTitle}
+          width="40"
+          height="40"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
       </a>
     </div>
     <div class="brand-info">

@@ -523,7 +523,8 @@ footer {
   text-decoration: underline;
 }
 
-.footer-rss {
+.footer-rss,
+.footer-status {
   display: inline-flex;
   align-items: center;
   gap: 4px;
