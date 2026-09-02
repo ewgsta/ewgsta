@@ -1,3 +1,8 @@
+#### Furkan (ewgsta)
+
+I'm a Software Engineer who develops open-source software.
+[**You can click here to contact me and view my accounts on other platforms.](https://ewgsta.me)
+
 #### Languages & Frameworks
 <table width="100%">
   <tbody>
@@ -107,24 +112,6 @@
     </tr>
     <tr>
       <td colspan="3"><small>To access the documentation for published projects, <a href="https://docs.ewgsta.me">visit this page.</a></small></td>
-    </tr>
-  </tbody>
-</table>
-
-#### Contact & Links
-<table width="100%">
-  <tbody>
-    <tr>
-      <td width="160"><b>Website</b></td>
-      <td><a href="https://ewgsta.me">ewgsta.me</a></td>
-    </tr>
-    <tr>
-      <td><b>Bluesky</b></td>
-      <td><a href="https://bsky.app/profile/ewgsta.me">@ewgsta.bsky.social</a></td>
-    </tr>
-    <tr>
-      <td><b>Email</b></td>
-      <td><a href="mailto:hello@ewgsta.me">hello@ewgsta.me</a></td>
     </tr>
   </tbody>
 </table>
