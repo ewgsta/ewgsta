@@ -1043,6 +1043,47 @@ footer {
   font-size: 0.875rem;
 }
 
+/* Lenis - Lokomotif kaydırma (smooth scroll) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Metin seçilebilir kalsın ama cursor text'e dönüşmesin */
+body,
+p,
+h1,
+h2,
+h3,
+span,
+div,
+li,
+blockquote,
+.hero-title,
+.quote-text,
+.section-header,
+.post-title,
+.project-name,
+.project-desc {
+  cursor: default;
+}
+::selection {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
 /* ========================================
    Responsive
    ======================================== */

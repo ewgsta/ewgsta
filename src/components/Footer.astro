@@ -63,11 +63,15 @@ const rssUrl = url('/rss.xml');
   const btn = document.querySelector<HTMLButtonElement>('.back-to-top');
   if (btn) {
     const toggle = () => btn.classList.toggle('visible', window.scrollY > 400);
+    // lenis scroll eventini de dinle (lenis scrollY'yi window.scrollY'ye yansıtıyor)
     window.addEventListener('scroll', toggle, { passive: true });
+    document.addEventListener('scroll', toggle, { passive: true } as any);
     toggle();
-    btn.addEventListener('click', () =>
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    );
+    // click lenis tarafından BaseLayout'ta yönetiliyor, fallback olarak native smooth
+    btn.addEventListener('click', () => {
+      const lenis = (window as any).__lenis;
+      if (!lenis) window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
 
   document.querySelectorAll('a[data-copy]').forEach((el) => {
