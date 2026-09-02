@@ -1,7 +1,7 @@
 #### Furkan (ewgsta)
 
-I'm a Software Engineer who develops open-source software.
-[**You can click here to contact me and view my accounts on other platforms.](https://ewgsta.me)
+I'm a Software Engineer who develops open-source software.  
+[You can click here to contact me and view my accounts on other platforms.](https://ewgsta.me)
 
 #### Languages & Frameworks
 <table width="100%">
