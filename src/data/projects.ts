@@ -14,6 +14,14 @@ export const slugOf = (id: string): string => String(id).replace(/\.(md|mdx)$/, 
 export async function getProjects(): Promise<ProjectView[]> {
   const projects = await getCollection('projects');
   return projects
-    .sort((a, b) => a.id.localeCompare(b.id))
+    .sort((a, b) => {
+      if (a.data.featured !== b.data.featured) {
+        return a.data.featured ? -1 : 1;
+      }
+      if (a.data.priority !== b.data.priority) {
+        return b.data.priority - a.data.priority;
+      }
+      return a.id.localeCompare(b.id);
+    })
     .map((project) => ({ ...project, slug: slugOf(project.id) }));
 }

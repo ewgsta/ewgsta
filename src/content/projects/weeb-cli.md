@@ -2,6 +2,7 @@
 title: Weeb CLI
 description: A Python tool that allows you to watch anime easily and quickly from your terminal without ads and distractions.
 featured: true
+priority: 100
 link: https://github.com/ewgsta/weeb-cli
 tech:
   - Python

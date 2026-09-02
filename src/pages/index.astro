@@ -41,7 +41,11 @@ const pinnedProjects = projects
       <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
     </a>
   </div>
-  <Divider />
-  <PostList posts={recentPosts} />
+  {recentPosts.length > 0 && (
+    <>
+      <Divider />
+      <PostList posts={recentPosts} />
+    </>
+  )}
   <div class="page-bottom-spacer"></div>
 </Layout>

@@ -6,6 +6,7 @@ export interface SocialLink {
   isCopyable?: boolean;
   copyValue?: string;
   label?: string;
+  priority: number;
 }
 
 export interface SiteData {
@@ -97,6 +98,7 @@ function parseLinks(raw: any[]): SocialLink[] {
       url: String(l.url ?? '#'),
       isCopyable: Boolean(l.isCopyable),
       copyValue: l.copyValue ? String(l.copyValue) : String(l.url ?? ''),
+      priority: Number.isFinite(Number(l.priority)) ? Number(l.priority) : 0,
     }));
 }
 
@@ -114,7 +116,8 @@ function resolveLinks(raw: Record<string, any>): SocialLink[] {
       }
     }
   }
-  return links;
+  // Elle priority sıralaması (büyük sayı = daha öncelikli)
+  return links.sort((a, b) => b.priority - a.priority);
 }
 
 /** Builds a BASE-aware absolute-ish URL (works on GitHub Pages and custom domains). */

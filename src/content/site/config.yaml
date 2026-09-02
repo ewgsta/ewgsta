@@ -33,7 +33,19 @@ mail: hello@ewgsta.me
 links:
   - platform: fa-brands fa-github
     url: https://github.com/ewgsta
+    priority: 100
   - platform: fa-brands fa-bluesky
     url: https://bsky.app/profile/ewgsta.bsky.social
+    priority: 70
+  - platform: fa-brands fa-dev
+    url: https://dev.to/ewgsta
+    priority: 80
+  - platform: fa-brands fa-reddit
+    url: https://www.reddit.com/user/ewgsta/
+    priority: 30
+  - platform: fa-brands fa-discord
+    url: https://discord.com/users/752050889958883380
+    priority: 20
   - platform: fa-solid fa-envelope
     url: '#'
+    priority: 90

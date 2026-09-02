@@ -19,6 +19,7 @@ const projects = defineCollection({
     description: z.string().default(''),
     link: z.string().default('#'),
     featured: z.boolean().default(false),
+    priority: z.number().int().default(0),
     tech: z.array(z.string()).default([]),
   }),
 });
@@ -61,6 +62,7 @@ const site = defineCollection({
             url: z.string(),
             isCopyable: z.boolean().optional(),
             copyValue: z.string().optional(),
+            priority: z.number().int().optional().default(0),
           })
         )
         .optional(),
