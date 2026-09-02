@@ -2,21 +2,21 @@ postsLabel: Posts
 backToPostsLabel: ← Back to Posts
 siteTitle: Furkan (ewgsta)
 siteDescription: >-
-  Full-stack developer and open-source enthusiast. Explore my projects, blog
+  Software Engineer developer and open-source enthusiast. Explore my projects, blog
   posts, and more.
 siteUrl: https://www.ewgsta.me
 siteLanguage: en
-siteAuthor: Furkan
+siteAuthor: Furkan Can K.
 siteKeywords: >-
-  full stack, developer, software engineer, web development, frontend, backend,
+  software, full-stack, developer, software engineer, web development, frontend, backend,
   programming, coding, blog, portfolio, software, javascript, typescript, react,
   nodejs, rust, go, ruby
-ogImage: https://github.com/ewgsta.png
-logoUrl: https://github.com/ewgsta.png
+ogImage: https://avatars.githubusercontent.com/u/159681870
+logoUrl: https://avatars.githubusercontent.com/u/159681870
 logoText: ''
-footerText: '© 2026 Furkan (ewgsta). All rights reserved.'
+footerText: '© 2026 - All rights reserved.'
 heroTitle: Furkan :3
-quoteText: Full-stack Developer
+quoteText: "I'm a Software Engineer who develops open-source software."
 findMeOnLabel: Find me on
 projectsLabel: Projects
 readMoreLabel: Read more
