@@ -116,7 +116,6 @@ function resolveLinks(raw: Record<string, any>): SocialLink[] {
       }
     }
   }
-  // Elle priority sıralaması (büyük sayı = daha öncelikli)
   return links.sort((a, b) => b.priority - a.priority);
 }
 
