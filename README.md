@@ -114,6 +114,8 @@
   </tbody>
 </table>
 
+[You can click here to contact me and see my projects and articles in detail.](https://ewgsta.me)
+
 <details>
   <summary><b>Github Insights</b></summary>
   <br>
@@ -134,5 +136,3 @@
     </tbody>
   </table>
 </details>
-
-[You can click here to contact me and see my projects and articles in detail.](https://ewgsta.me)
