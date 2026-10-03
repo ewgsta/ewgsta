@@ -1,4 +1,5 @@
 #### Furkan (ewgsta)
+[You can click here to contact me and see my projects and articles in detail.](https://ewgsta.me)
 
 
 #### Languages & Frameworks
@@ -113,8 +114,6 @@
     </tr>
   </tbody>
 </table>
-
-[You can click here to contact me and see my projects and articles in detail.](https://ewgsta.me)
 
 <details>
   <summary><b>Github Insights</b></summary>
